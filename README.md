@@ -34,6 +34,18 @@ Deployment behavior:
 - `assets/quick-order-list.{js,css}` + `sections/quick-order-list.liquid`: quick-buy list experience.
 - `assets/cart-drawer.js`, `sections/cart-drawer.liquid`, `sections/cart-gift-wrapping.liquid`, `sections/cart-goal.liquid`: enhanced cart drawer with goal progress and gift wrap.
 - `sections/mobile-sticky-bar.liquid` + `assets/notification.js`: mobile CTA bar/notifications.
+
+## Where to Edit What
+
+- Header & Announcement: `sections/header.liquid`, `sections/announcement-bar.liquid`, styles in `assets/header.css`, announcement tweaks in `assets/custom.css`.
+- Footer: `sections/footer.liquid`, social/links blocks in `sections/footer-group.json`, styles in `assets/footer.css`.
+- Homepage Hero: `sections/fullscreen-slideshow.liquid` and `sections/hero.liquid`, styles in `assets/hero.css` and `assets/custom.css`.
+- PDP (Product Page): `sections/main-product.liquid`, sticky ATC in `sections/sticky-atc-bar.liquid` + `assets/sticky-atc-bar.{css,js}`, price badges in `snippets/price.liquid` + `assets/custom.css`, media in `assets/product-media.js`.
+- PLP / Collection Grid: `sections/main-collection-product-grid.liquid`, filters in `snippets/facets*.liquid`, styles/scripts in `assets/collection.css` and `assets/facets.js`.
+- Cart & Cart Drawer: `sections/cart-drawer.liquid`, `sections/cart-gift-wrapping.liquid`, `sections/cart-goal.liquid`, scripts in `assets/cart-drawer.js`, `assets/cart-goal.js`, styles in `assets/cart-drawer.css`.
+- Search: `sections/main-search.liquid`, predictive search in `sections/predictive-search.liquid`, scripts in `assets/main-search.js` and `assets/search-drawer.js`, styles in `assets/search.css`.
+- Bundles & Upsell: `sections/products-bundle.liquid`, logic in `assets/product-bundle.js`, recommendations slider in `sections/sol-product-recommendations.liquid`.
+- Promotions & Banners: `sections/promotion-banner.liquid`, `sections/scrolling-promotion.liquid`, styles in `assets/promotion-banner.css`, `assets/scrolling-promotion.css`.
 ## Getting required values
 
 - Create Theme Access app in Shopify Admin and copy token.
