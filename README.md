@@ -1,6 +1,6 @@
 # Zest Shopify Theme
 
-This repo is configured to auto-deploy to the live Shopify theme using GitHub Actions.
+This repo is configured with a safer deployment flow using GitHub Actions.
 
 ## One-time setup
 
@@ -8,14 +8,15 @@ This repo is configured to auto-deploy to the live Shopify theme using GitHub Ac
 2. In GitHub repo settings, add these Actions secrets:
    - `SHOPIFY_STORE`: `3e42ad-1e.myshopify.com`
    - `SHOPIFY_CLI_THEME_TOKEN`: Shopify Theme Access password/token
-   - `SHOPIFY_THEME_ID`: numeric ID of your current live theme
-3. Push to `main`.
+   - `SHOPIFY_STAGING_THEME_ID`: numeric ID of your staging theme
+   - `SHOPIFY_LIVE_THEME_ID`: numeric ID of your current live theme
+3. In GitHub repo settings, create environment `shopify-live` and add required reviewers (manual approval gate).
+4. Push to `main`.
 
-Every push to `main` will run:
+Deployment behavior:
 
-```bash
-shopify theme push --allow-live --nodelete
-```
+- Push to `main` -> auto deploy to staging theme
+- Manual run (`Actions` -> `Deploy Shopify Theme` -> `Run workflow` with `deploy_live=true`) -> live deploy after environment approval
 
 ## Getting required values
 

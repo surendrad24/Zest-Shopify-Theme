@@ -1,14 +1,49 @@
-name: Deploy Shopify Live Theme
+name: Deploy Shopify Theme
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      deploy_live:
+        description: "Deploy to live theme (requires environment approval)"
+        required: true
+        default: false
+        type: boolean
 
 jobs:
-  deploy:
+  deploy_staging:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Deploy to Shopify staging theme
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: |
+          shopify theme push \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --theme "${{ secrets.SHOPIFY_STAGING_THEME_ID }}" \
+            --nodelete \
+            --path .
+
+  deploy_live:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_live
+    runs-on: ubuntu-latest
+    environment:
+      name: shopify-live
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,7 +63,7 @@ jobs:
         run: |
           shopify theme push \
             --store "$SHOPIFY_FLAG_STORE" \
-            --theme "${{ secrets.SHOPIFY_THEME_ID }}" \
+            --theme "${{ secrets.SHOPIFY_LIVE_THEME_ID }}" \
             --allow-live \
             --nodelete \
             --path .
