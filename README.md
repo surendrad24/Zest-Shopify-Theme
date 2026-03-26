@@ -6,10 +6,10 @@ This repo is configured with a safer deployment flow using GitHub Actions.
 
 1. Add your theme files to this repo root (or adjust workflow `--path`).
 2. In GitHub repo settings, add these Actions secrets:
-   - `SHOPIFY_STORE`: `3e42ad-1e.myshopify.com`
+   - `SHOPIFY_FLAG_STORE`: `3e42ad-1e.myshopify.com`
    - `SHOPIFY_CLI_THEME_TOKEN`: Shopify Theme Access password/token
-   - `SHOPIFY_STAGING_THEME_ID`: numeric ID of your staging theme
-   - `SHOPIFY_LIVE_THEME_ID`: numeric ID of your current live theme
+   - `SHOPIFY_FLAG_STAGING_THEME_ID`: numeric ID of your staging theme
+   - `SHOPIFY_FLAG_THEME_ID`: numeric ID of your current live theme
 3. In GitHub repo settings, create environment `shopify-live` and add required reviewers (manual approval gate).
 4. Push to `main`.
 

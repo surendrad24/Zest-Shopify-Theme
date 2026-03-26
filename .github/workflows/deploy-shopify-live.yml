@@ -30,12 +30,12 @@ jobs:
 
       - name: Deploy to Shopify staging theme
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           shopify theme push \
             --store "$SHOPIFY_FLAG_STORE" \
-            --theme "${{ secrets.SHOPIFY_STAGING_THEME_ID }}" \
+            --theme "${{ secrets.SHOPIFY_FLAG_STAGING_THEME_ID }}" \
             --nodelete \
             --path .
 
@@ -58,12 +58,12 @@ jobs:
 
       - name: Deploy to Shopify live theme
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           shopify theme push \
             --store "$SHOPIFY_FLAG_STORE" \
-            --theme "${{ secrets.SHOPIFY_LIVE_THEME_ID }}" \
+            --theme "${{ secrets.SHOPIFY_FLAG_THEME_ID }}" \
             --allow-live \
             --nodelete \
             --path .
