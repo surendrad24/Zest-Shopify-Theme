@@ -1,0 +1,220 @@
+.f-hero .container-full {
+  padding: 0;
+}
+.f-hero:not(.f-hero--mobile) .f-hero--small {
+  --hero-height: 29rem;
+}
+.f-hero:not(.f-hero--mobile) .f-hero--medium {
+  --hero-height: 36rem;
+}
+.f-hero:not(.f-hero--mobile) .f-hero--large {
+  --hero-height: 42rem;
+}
+@media (min-width: 768px) {
+  .f-hero--small {
+    --hero-height: 42rem;
+  }
+  .f-hero--medium {
+    --hero-height: 56rem;
+  }
+  .f-hero--large {
+    --hero-height: 36rem;
+  }
+  .f-hero:not(.f-hero--adapt) .f-hero__wrapper::before {
+    display: none;
+  }
+}
+@media (max-width: 767.98px) {
+  .f-hero-mobile--small {
+    --hero-height: 29rem;
+  }
+  .f-hero-mobile--medium {
+    --hero-height: 36rem;
+  }
+  .f-hero-mobile--large {
+    --hero-height: 13rem;
+  }
+  .f-hero-mobile--extra-large {
+    --hero-height: 66rem;
+  }
+  .f-hero:not(.f-hero-mobile--adapt) .f-hero__wrapper::before {
+    display: none;
+  }
+}
+.f-hero__wrapper {
+  min-height: var(--hero-height);
+}
+.f-hero__content {
+  z-index: 1;
+  color: var(--text-color);
+}
+@media (min-width: 768px) {
+  .f-hero__content {
+    max-width: 60%;
+  }
+}
+.f-hero__content .btn--underline {
+  color: currentColor;
+}
+.f-hero__content-wrapper {
+  padding-top: var(--vertical-content-padding, 4rem);
+  padding-bottom: var(--vertical-content-padding, 4rem);
+}
+.f-hero__content-wrapper:not(.container) {
+  max-width: 100%;
+}
+@media (max-width: 767.98px) {
+  .f-hero__content-wrapper {
+    padding-top: var(--vertical-content-padding-mobile, 4rem);
+    padding-bottom: var(--vertical-content-padding-mobile, 4rem);
+  }
+}
+@media (max-width: 767.98px) {
+  .f-hero__wrapper--mobile-stack {
+    padding: 0;
+  }
+  .f-hero__wrapper--mobile-stack:before,
+  .f-hero__wrapper--mobile-stack .bg-overlay {
+    display: none;
+  }
+  .f-hero__wrapper--mobile-stack .f-hero__content-wrapper {
+    padding: 0;
+    position: static;
+  }
+  .f-hero__wrapper--mobile-stack .f-hero__bg--mobile {
+    position: relative;
+  }
+  .f-hero__wrapper--mobile-stack .f-hero__bg--desktop {
+    position: relative !important;
+  }
+  .f-hero__wrapper--mobile-stack .f-hero__bg {
+    height: var(--hero-height);
+    position: relative;
+  }
+  .f-hero__wrapper--mobile-stack .f-hero__content {
+    width: 100%;
+    padding: 2rem 1.5rem 0;
+    color: var(--color-text-body);
+  }
+  .f-hero__wrapper--mobile-stack .f-video-wrapper {
+    position: relative !important;
+  }
+}
+.f-hero:not(.f-hero--adapt) .f-video-wrapper,
+.f-hero:not(.f-hero--adapt) .f-hero__bg {
+  height: var(--hero-height);
+}
+.f-hero .f-hero__bg img,
+.f-hero .f-hero__bg svg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+/* =========================================================
+   SALE HERO CLEANUP
+   Section: template--21456914743532__hero_Qf8FAx
+========================================================= */
+
+/* 1) Reduce the huge top/bottom padding inside overlay */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero__content-wrapper{
+  padding-top: 2.25rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* 2) Keep heading in the center, T&C at bottom */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero__content-wrapper{
+  flex-direction: column;
+}
+
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero__content{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: 100% !important; /* avoid 60% cap */
+}
+
+/* Center the heading block */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero_heading{
+  margin-top: auto;          /* pushes it toward center */
+  /* margin-bottom: auto;       keeps it centered */
+}
+
+/* Push the disclaimer to the bottom edge */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero_text{
+  margin-top: auto;
+  padding-bottom: 0;
+}
+
+/* Optional: make disclaimer look like sample */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero_text p{
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+/* 3) Banner height control (half-screen 느낌) */
+#shopify-section-template--21456914743532__hero_Qf8FAx .f-hero__wrapper{
+  min-height: 52vh !important;   /* desktop */
+}
+
+@media (max-width: 767.98px){
+  #shopify-section-template--21456914743532__hero_Qf8FAx .f-hero__wrapper{
+    min-height: 32vh !important; /* mobile */
+  }
+}
+
+/* ONLY for the I AM SOL SALE hero */
+.iam-sale-hero .f-hero__content{
+  position: static !important;      /* key fix: stop absolute positioning using this as parent */
+  padding-bottom: 0 !important;
+}
+
+/* give space for the bottom line using the FULL overlay wrapper */
+.iam-sale-hero .f-hero__content-wrapper{
+  padding-bottom: 70px !important;
+}
+
+/* Headline stays centered */
+.iam-sale-hero .f-hero_heading{
+  margin: 0 !important;
+}
+
+/* Pin disclaimer (Text block) to bottom of the banner */
+.iam-sale-hero .f-hero_text{
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 28px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.iam-sale-hero .f-hero_text p{
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  opacity: 0.85 !important;
+}
+
+@media (max-width: 767px){
+  .iam-sale-hero .f-hero__content-wrapper{
+    padding-bottom: 55px !important;
+  }
+
+  .iam-sale-hero .f-hero_text{
+    bottom: 18px !important;
+  }
+
+  .iam-sale-hero .f-hero_text p{
+    font-size: 10px !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+

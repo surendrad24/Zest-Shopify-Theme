@@ -1,0 +1,72 @@
+<style>
+  .marquee-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 50s linear infinite;
+  }
+
+  .marquee-item {
+    color: #111;
+    padding: 0 2rem;
+    font-size: 50px;
+    white-space: nowrap;
+    margin: 0 75px;
+  }
+
+  @media (max-width: 768px) {
+    .marquee-item {
+      font-size: 30px;
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <!-- First set -->
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <!-- Second identical set (for seamless loop) -->
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+    <div class="marquee-item">{{ section.settings.text }}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sol Instagram Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Instagram handle with promo text",
+      "default": "tag us and follow us @solandsand.store"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sol Instagram Text"
+    }
+  ]
+}
+{% endschema %}

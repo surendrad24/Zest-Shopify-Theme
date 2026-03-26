@@ -1,0 +1,364 @@
+.announcement-bar__message p{
+  font-size: 12px;
+}
+/* styles to keep announcement bar at top always */
+.announcement-bar__inner{
+    /* position: fixed !important; */
+    top: 0;
+    width: 100%;
+    background: #000;
+    z-index: 98;
+}
+
+header.site-header{
+  padding: 9px 0;
+}
+@media screen and (max-width: 768px){
+  .announcement-bar__row{
+    padding: 6px 20px !important;
+  }
+}
+/* -- custom styles to keep header at top -- */
+.header-sticky {
+  top: 38px !important;
+}
+.f-price-item--sale{
+  color: #FF0000 !important;
+}
+.f-site-nav__dropdown--mega ul.f-grid>li>a{
+  text-transform: capitalize !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+}
+@media screen and (max-width: 768px){
+  .header-sticky{
+    top: 30px !important;
+  }
+}
+/* cart drawer */
+/* .f-cart-recommendations .product-card__wrapper{
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='100' stroke-linecap='square'/%3e%3c/svg%3e");
+} */
+
+/* footer */
+
+@media screen and (max-width: 768px){
+  .site-footer__block-heading, .site-footer__block-content{
+    padding-left: 17px !important;
+  }
+}
+
+/* Header alignment fixes for all devices */
+.site-header__inner {
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Fix center section alignment */
+.site-header__center {
+  justify-content: center !important;
+}
+
+/* Ensure left and right sections align properly */
+.site-header__left {
+  justify-content: flex-start !important;
+}
+
+.site-header__right {
+  justify-content: flex-end !important;
+}
+
+/* Mobile specific fixes */
+@media screen and (max-width: 768px) {
+  .site-header__mobile-logo--center .site-header__center {
+    justify-content: center !important;
+  }
+  
+  .site-header__mobile-logo--left .site-header__center {
+    justify-content: flex-start !important;
+  }
+  
+  .site-header__mobile-logo--right .site-header__center {
+    justify-content: flex-end !important;
+  }
+}
+.f-preorder-text{
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* 1) When on-sale, hide the duplicate "regular" block above */
+.f-price.f-price--on-sale .f-price__regular {
+  display: none !important;
+}
+
+/* IMPORTANT: allow the price row to take full available width */
+.f-price.f-price--on-sale {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Sale row layout:  [$sale] [$compare] .......... [You Save] */
+.f-price.f-price--on-sale .f-price__sale{
+  display: grid !important;
+  grid-template-columns: max-content max-content 1fr max-content !important;
+  align-items: center !important;
+  width: 100% !important;
+  column-gap: 12px !important; /* gap between $sale and $compare */
+}
+
+/* Sale price */
+.f-price.f-price--on-sale .f-price__sale > .f-price-item--sale{
+  grid-column: 1;
+  white-space: nowrap;
+}
+
+/* Compare price wrapper (the span that contains <s> ) */
+.f-price.f-price--on-sale .f-price__sale > span:has(s.f-price-item--regular){
+  grid-column: 2;
+  white-space: nowrap;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Badge to far right + add space BEFORE it (this is what you asked) */
+.f-price.f-price--on-sale .f-price__sale .sol-save-wrap{
+  grid-column: 4;
+  justify-self: end;
+  margin: 0 !important;
+  padding-left: 16px !important;  /* <-- creates the gap between $74 and badge */
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap;
+}
+
+/* Remove any empty spans that the theme injects */
+.f-price.f-price--on-sale .f-price__sale > span:empty {
+  display: none !important;
+}
+
+/* Badge styling */
+.sol-save-badge {
+  background: #d60000;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Mobile: keep single line */
+@media (max-width: 749px){
+  .f-price.f-price--on-sale .f-price__sale{
+    column-gap: 10px !important;
+  }
+}
+
+
+/* Sale row layout:  [$sale]  [$compare]  (flex space)  [You Save] */
+.f-price.f-price--on-sale .f-price__sale{
+  display: grid !important;
+  grid-template-columns: max-content max-content 1fr max-content;
+  align-items: center !important;
+  column-gap: 12px !important; /* adjust to taste */
+  width: 100% !important;
+}
+
+/* Sale price (2nd span child) */
+.f-price.f-price--on-sale .f-price__sale > .f-price-item--sale{
+  grid-column: 1;
+  white-space: nowrap;
+}
+
+/* Compare price wrapper span (4th span child) */
+.f-price.f-price--on-sale .f-price__sale > span:nth-of-type(4){
+  grid-column: 2;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Badge to far right */
+.f-price.f-price--on-sale .f-price__sale .sol-save-wrap{
+  grid-column: 4;
+  justify-self: end;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap;
+}
+
+
+/* Remove the empty span that causes odd gaps */
+.f-price.f-price--on-sale .f-price__sale > span:empty {
+  display: none !important;
+}
+
+/* Keep the compare wrapper inline and neat */
+.f-price.f-price--on-sale .f-price__sale > span:not(.visually-hidden) {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+/* Badge styling (use yours if already set) */
+.sol-save-badge {
+  background: #d60000;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 3) Mobile: keep it on one line like your reference */
+@media (max-width: 749px) {
+  .f-price.f-price--on-sale .f-price__sale {
+    flex-wrap: nowrap !important;
+  }
+
+  .f-price.f-price--on-sale .f-price-item--sale,
+  .f-price.f-price--on-sale s.f-price-item--regular {
+    white-space: nowrap;
+  }
+}
+
+/* ---------------- MOBILE PRICE LAYOUT FIX ---------------- */
+@media (max-width: 749px){
+
+  /* Make sure container can wrap */
+  .f-price.f-price--on-sale .f-price__sale{
+    grid-template-columns: max-content max-content !important; /* only two items on row 1 */
+    grid-auto-rows: auto !important;
+    row-gap: 8px !important;
+    column-gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Sale price stays on first row */
+  .f-price.f-price--on-sale .f-price__sale > .f-price-item--sale{
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Compare price stays on first row */
+  .f-price.f-price--on-sale .f-price__sale > span:has(s.f-price-item--regular){
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Badge goes to next line (prevents overflow) */
+  .f-price.f-price--on-sale .f-price__sale .sol-save-wrap{
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    justify-self: start !important;
+    padding-left: 0 !important;  /* remove desktop spacing */
+    margin-top: 0 !important;
+  }
+
+  /* Optional: slightly smaller badge for mobile */
+  .sol-save-badge{
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+}
+/* ---------------- MOBILE: PERFECT ALIGNMENT (FLEX ORDER) ---------------- */
+@media (max-width: 749px){
+
+  /* Make the sale block a flexible row that can wrap cleanly */
+  .f-price.f-price--on-sale .f-price__sale{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    row-gap: 8px !important;
+    width: 100% !important;
+  }
+
+  /* Sale price first */
+  .f-price.f-price--on-sale .f-price__sale > .f-price-item--sale{
+    order: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Compare price second (span wrapper containing <s>) */
+  .f-price.f-price--on-sale .f-price__sale > span{
+    order: 2 !important;
+  }
+  .f-price.f-price--on-sale .f-price__sale > span s.f-price-item--regular{
+    white-space: nowrap !important;
+  }
+
+  /* Badge always on new line, left aligned */
+  .f-price.f-price--on-sale .f-price__sale .sol-save-wrap{
+    order: 3 !important;
+    flex: 0 0 100% !important;   /* forces it to next line */
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+
+  /* Hide empty spacing spans */
+  .f-price.f-price--on-sale .f-price__sale > span:empty{
+    display: none !important;
+  }
+
+  /* Optional: slightly tighter badge on mobile */
+  .sol-save-badge{
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+}
+/* ----------------------------
+   HOME PAGE (MOBILE) price alignment fix
+   - Keep $sale + $compare together
+   - Put "You Save" on its own row
+-----------------------------*/
+@media (max-width: 749px) {
+  .template-index .f-price.f-price--on-sale .f-price__sale {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+    row-gap: 6px !important;
+    width: 100% !important;
+  }
+
+  /* Sale price */
+  .template-index .f-price.f-price--on-sale .f-price__sale > .f-price-item--sale {
+    order: 1;
+    white-space: nowrap;
+  }
+
+  /* Compare-at price wrapper (the span that contains <s>) */
+  .template-index .f-price.f-price--on-sale .f-price__sale > span:nth-of-type(4) {
+    order: 2;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* "You Save" goes to next line and aligns nicely */
+  .template-index .f-price.f-price--on-sale .f-price__sale .sol-save-wrap {
+    order: 3;
+    width: 100% !important;
+    margin-left: 0 !important;
+    display: flex !important;
+    justify-content: flex-start !important; /* change to flex-end if you want right aligned */
+    align-items: center !important;
+  }
+
+  /* Slightly tighter badge on small cards */
+  .template-index .sol-save-badge {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+}

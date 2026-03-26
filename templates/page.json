@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "collection_list_wBb7Rn": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_4B9pWp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "i-am-sol",
+            "image": "shopify://shop_images/DSC09524_297beb06-3c56-4259-b2f2-8b05d24dba01.jpg",
+            "title": ""
+          }
+        },
+        "featured_collection_dtG47R": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "diamond-collections",
+            "title": ""
+          }
+        },
+        "featured_collection_dUjeen": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "midnight-in-paris",
+            "title": ""
+          }
+        },
+        "featured_collection_WX8x8L": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "into-the-wild",
+            "title": ""
+          }
+        },
+        "featured_collection_hiYd6d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "la-riviera",
+            "image": "shopify://shop_images/IMG_2804.jpg",
+            "title": ""
+          }
+        },
+        "featured_collection_pWt4yh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "holiday-mirage",
+            "image": "shopify://shop_images/Rectangle2_45.png",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_4B9pWp",
+        "featured_collection_dtG47R",
+        "featured_collection_dUjeen",
+        "featured_collection_WX8x8L",
+        "featured_collection_hiYd6d",
+        "featured_collection_pWt4yh"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
+        "heading": "Collections",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "title_font": "heading",
+        "title_size": "h6",
+        "card_style": "1",
+        "text_alignment": "center",
+        "text_color": "#000000",
+        "image_ratio": "adapt",
+        "show_count": false,
+        "inline_count": false,
+        "columns": 4,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_url": "",
+        "button_style": "btn--primary",
+        "enable_slider": false,
+        "show_dots": false,
+        "show_nav": false,
+        "enable_swipe_mobile": false,
+        "column_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_wBb7Rn"
+  ]
+}

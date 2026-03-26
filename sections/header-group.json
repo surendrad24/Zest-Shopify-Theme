@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header.name",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>  |  GET 15% OFF YOUR FIRST PURCHASE </p>",
+            "link": "",
+            "homepage_only": false,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        },
+        "announcement_kzxArM": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Follow @IAMSOL.OFFICIAL for Exclusive Drops + Gifts</p>",
+            "link": "https://www.instagram.com/iamsol.official",
+            "homepage_only": true,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        },
+        "announcement_iaqV7H": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Explore the Latest I AM SÓL Collection</p>",
+            "link": "",
+            "homepage_only": true,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "announcement_kzxArM",
+        "announcement_iaqV7H"
+      ],
+      "custom_css": [
+        ".announcement-bar__message p {font-size: 14px;}",
+        "@media screen and (max-width: 576px) {.announcement-bar__message p {font-size: 12px; }}"
+      ],
+      "settings": {
+        "color_schema": "scheme-482a14b8-d630-40db-92cb-e8cb3a5e9e64",
+        "show_close_button": false,
+        "enable_marquee": true,
+        "pause_on_hover": true,
+        "scroll_speed": 18,
+        "background_color": "#ffffff",
+        "text_color": "#ffffff",
+        "font_size_desktop": 12,
+        "font_size_mobile": 11
+      }
+    },
+    "banner_logo_e4bURA": {
+      "type": "banner-logo",
+      "blocks": {
+        "subtitle_QwAQeU": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "Sub heading"
+          }
+        },
+        "title_8RFbmp": {
+          "type": "title",
+          "settings": {
+            "title": "Banner <em>logo</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl"
+          }
+        },
+        "button_E9BrBH": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_QwAQeU",
+        "title_8RFbmp",
+        "button_E9BrBH"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_schema": "scheme-5",
+        "image": "shopify://shop_images/i-am-sol-horizontal-pure-white-rgb.svg",
+        "image_mobile": "shopify://shop_images/i-am-sol-horizontal-pure-white-rgb.svg",
+        "image_overlay_opacity": 20,
+        "logo": "shopify://shop_images/i-am-sol-horizontal-pure-white-rgb.svg",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "collection_UyqqfE": {
+          "type": "collection",
+          "settings": {
+            "heading": "SHOP ALL",
+            "card_style": "1",
+            "text_color": "#000000",
+            "container": "inherit",
+            "columns": 2,
+            "addon_column": 45,
+            "collection_1": "new-arrivals",
+            "collection_2": "accessories",
+            "collection_3": "",
+            "collection_4": "",
+            "collection_5": "",
+            "collection_6": ""
+          }
+        },
+        "product_UJMHBd": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "heading": "Sale",
+            "container": "inherit",
+            "columns": 1,
+            "addon_column": 70,
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_UyqqfE",
+        "product_UJMHBd"
+      ],
+      "custom_css": [
+        ".f-country-flags {display: none;}",
+        "@media screen and (min-width: 769px) {.site-logo__img {margin-bottom: 7px; }}"
+      ],
+      "settings": {
+        "color_schema": "",
+        "layout": "design-4",
+        "container": "container",
+        "sticky_header": true,
+        "sticky_type": "always",
+        "transparent_header": true,
+        "logo": "shopify://shop_images/i-am-sol-horizontal-eclipse-black-rgb.svg",
+        "logo_transparent": "shopify://shop_images/i-am-sol-horizontal-pure-white-rgb.svg",
+        "logo_width": 170,
+        "logo_mobile_width": 150,
+        "main_menu": "menue",
+        "mobile_menu": "menue",
+        "menu_dropdown_color_schema": "",
+        "dropdown_menu_trigger": "hover",
+        "enable_mega_menu": true,
+        "show_search": true,
+        "show_cart": true,
+        "show_account": true,
+        "show_country_selector": false,
+        "show_language_selector": false,
+        "logo_mobile_position": "center",
+        "mobile_show_search": true,
+        "mobile_show_cart": true,
+        "mobile_show_account": true,
+        "mobile_show_social": true,
+        "padding_top": 13,
+        "padding_bottom": 13
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "banner_logo_e4bURA",
+    "header"
+  ]
+}

@@ -1,0 +1,258 @@
+<style>
+  #{{ section.id }}-sol-collection__container.sol-collection__container {
+      width: 100%;
+      margin: 50px auto 10px;
+      max-width: 1600px;
+      position: relative;
+      padding-top: {{ section.settings.padding_desktop_top }}px;
+      padding-bottom: {{ section.settings.padding_desktop_bottom }}px;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__heading {
+      font-size: 55px;
+      font-weight: 400;
+      line-height: 55px;
+      letter-spacing: 0em;
+      white-space: nowrap;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 270px;
+  }
+  #{{ section.id }}-sol-collection__container .sol-collection__grid--item{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 14px;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 25px;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__title{
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 25px;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__image--wrapper {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__image--wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      vertical-align: middle;
+  }
+  #{{ section.id }}-sol-collection__container .sol-collection__image--wrapper svg {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 0.75 / 1;
+    vertical-align: middle;
+  }
+
+  #{{ section.id }}-sol-collection__container .sol-collection__cta{
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      color: #000;
+  }
+
+  @media screen and (max-width: 1024px) {
+      #{{ section.id }}-sol-collection__container .sol-collection__grid {
+          grid-column-gap: 135px;
+      }
+  }
+
+  @media screen and (max-width: 768px) {
+      #{{ section.id }}-sol-collection__container .sol-collection__grid {
+          grid-column-gap: 67.5px;
+      }
+      #{{ section.id }}-sol-collection__container.sol-collection__container{
+        padding-top: {{ section.settings.padding_mobile_top }}px;
+        padding-bottom: {{ section.settings.padding_mobile_bottom }}px;
+      }
+  }
+
+  @media screen and (max-width: 664px) {
+      #{{ section.id }}-sol-collection__container .sol-collection__grid{
+          grid-template-columns: 1fr;
+          margin: 25px 47px 0 47px;
+          grid-column-gap: 0px;
+          grid-row-gap: 45px;
+      }
+      #{{ section.id }}-sol-collection__container .sol-collection__heading {
+          font-size: 40px;
+          line-height: 40px;
+          position: static;
+          transform: none;
+          text-align: center;
+      }
+      #{{ section.id }}-sol-collection__container .sol-collection{
+          flex-direction: column-reverse;
+      }
+      #{{ section.id }}-sol-collection__container .sol-collection__grid--item.sol-grid__right .sol-collection{
+          margin-top: 0;
+      }
+  }
+
+  @media screen and (max-width: 375px){
+      #{{ section.id }}-sol-collection__container .sol-collection__heading{
+          font-size: 30px;
+          line-height: 30px;
+      }
+  }
+</style>
+
+<div id="{{ section.id }}-sol-collection__container" class="sol-collection__container">
+  <div class="sol-collection__heading">{{ section.settings.title }}</div>
+
+  <div class="sol-collection__grid">
+    <!-- LEFT / Collection 1 -->
+    <div class="sol-collection__grid--item sol-grid__left">
+      <div class="sol-collection">
+        <div class="sol-collection__title">{{ section.settings.col_1.title }}</div>
+
+        <a href="{{ section.settings.col_1.url }}" class="sol-collection__image--wrapper">
+          {% if section.settings.col_image_1 != blank %}
+            <img
+              src="{{ section.settings.col_image_1 | image_url }}"
+              alt="{{ section.settings.col_1.title | escape }}"
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </a>
+      </div>
+
+      <a href="{{ section.settings.col_1.url }}" class="sol-collection__cta">Shop Now</a>
+    </div>
+
+    <!-- RIGHT / Collection 2 -->
+    <div class="sol-collection__grid--item sol-grid__right">
+      <div class="sol-collection">
+        <div class="sol-collection__title">{{ section.settings.col_2.title }}</div>
+
+        <!-- ✅ FIX: this must link to col_2 (not col_1) -->
+        <a href="{{ section.settings.col_2.url }}" class="sol-collection__image--wrapper">
+          {% if section.settings.col_image_2 != blank %}
+            <img
+              src="{{ section.settings.col_image_2 | image_url }}"
+              alt="{{ section.settings.col_2.title | escape }}"
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </a>
+      </div>
+
+      <a href="{{ section.settings.col_2.url }}" class="sol-collection__cta">Shop Now</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sol Featured Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What's Trending"
+    },
+    {
+      "type": "header",
+      "content": "Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "col_1",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "col_image_1",
+      "label": "Thumbnail"
+    },
+    {
+      "type": "header",
+      "content": "Collection 2"
+    },
+    {
+      "type": "collection",
+      "id": "col_2",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "col_image_2",
+      "label": "Thumbnail"
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop_top",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop_bottom",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sol Featured Collections"
+    }
+  ]
+}
+{% endschema %}

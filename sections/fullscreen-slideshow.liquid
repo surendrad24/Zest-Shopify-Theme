@@ -1,0 +1,219 @@
+{% stylesheet %}
+.fullscreen-slideshow {
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  overflow: hidden;
+}
+
+/* @media screen and (max-width: 768px) {
+    .fullscreen-slideshow {
+        margin-top: 20px;
+    }  */
+}
+
+.fullscreen-slideshow__slide {
+  position: absolute;   /* stack on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;           /* hide by default */
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.fullscreen-slideshow__image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; /* fills the area, crops minimally */
+  object-position: top center; /* always keep top area visible */
+
+}
+
+.fullscreen-slideshow__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+}
+
+.slideshow__content-wrapper {
+  position: absolute;
+  /* bottom: 33vh; push to bottom */
+  top: 48vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-end;  /* align at bottom vertically */
+  justify-content: center; /* optional: keep centered horizontally */
+  padding: 10rem; /* spacing from bottom */
+  text-align: center; /* keep text neat */
+}
+
+
+.fullscreen-slideshow__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.fullscreen-slideshow__heading {
+  font-size: calc(var(--font-hxl-size) * 0.7);;
+  font-weight: bold;
+  font-family: var(--font-mega-family);
+  color: #fff;
+}
+
+.fullscreen-slideshow__subheading {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.fullscreen-slideshow__button {
+  margin-top: 20px;
+  padding: 10px 32px;
+  font-size: 16px;
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: var(--font-btn-family);
+  text-transform: uppdercase;
+}
+
+.fullscreen-slideshow {
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  overflow: hidden;
+}
+
+
+
+.fullscreen-slideshow__slide.active {
+  opacity: 1;           /* show active slide */
+  z-index: 1;
+}
+
+
+
+{% endstylesheet %}
+
+<div class="fullscreen-slideshow" >
+  {% for block in section.blocks %}
+    <div class="fullscreen-slideshow__slide">
+      <picture>
+        {% if block.settings.mobile_image != blank %}
+          <source 
+            media="(max-width: 767px)" 
+            srcset="{{ block.settings.mobile_image | image_url: width: 800 }}">
+        {% endif %}
+        {% if block.settings.desktop_image != blank %}
+          <img 
+            src="{{ block.settings.desktop_image | image_url: width: 2000 }}" 
+            alt="{{ block.settings.heading | escape }}" 
+            class="fullscreen-slideshow__image">
+        {% endif %}
+      </picture>
+
+      <div class="fullscreen-slideshow__overlay"></div>
+      <div class="slideshow__content-wrapper">
+        <div class="fullscreen-slideshow__content">
+            {% if block.settings.heading != blank %}
+            <h1 class="fullscreen-slideshow__heading">{{ block.settings.heading }}</h1>
+            {% endif %}
+            {% if block.settings.subheading != blank %}
+            <p class="fullscreen-slideshow__subheading">{{ block.settings.subheading }}</p>
+            {% endif %}
+            {% if block.settings.button_label != blank %}
+            <a href="{{ block.settings.button_link }}" class="fullscreen-slideshow__button">
+                {{ block.settings.button_label }}
+            </a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".fullscreen-slideshow__slide");
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === i);
+    });
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  showSlide(index); // init
+  setInterval(nextSlide, 5000); // change every 5s
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Fullscreen Slideshow",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fullscreen Slideshow",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

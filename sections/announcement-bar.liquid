@@ -1,0 +1,561 @@
+{% liquid
+  assign current_handle = handle | default: request.path | split: '/' | last
+
+  assign visible_blocks = 0
+  for block in section.blocks
+    if block.type == 'announcement' and block.settings.text != blank
+      assign hide_on_page = block.settings.hide_on_page
+      assign should_show = false
+
+      if block.settings.homepage_only == false or request.page_type == 'index'
+        assign should_show = true
+      endif
+
+      if hide_on_page != blank and current_handle != blank
+        if hide_on_page contains current_handle
+          assign should_show = false
+        endif
+      endif
+
+      if should_show
+        assign visible_blocks = visible_blocks | plus: 1
+      endif
+    endif
+  endfor
+%}
+
+{% style %}
+  /* Per-section variables */
+  #shopify-section-{{ section.id }} {
+    --ab-bg: {{ section.settings.background_color }};
+    --ab-color: {{ section.settings.text_color }};
+    --ab-font-desktop: {{ section.settings.font_size_desktop }}px;
+    --ab-font-mobile: {{ section.settings.font_size_mobile }}px;
+
+    /* Base speed: seconds per 1000px (JS converts to real duration) */
+    --ab-speed-base: {{ section.settings.scroll_speed }}s;
+
+    --ab-gap: 1.25rem;
+    --ab-pad-y: 6px;
+    --ab-pad-x: 14px;
+
+    /* JS will set these */
+    --ab-marquee-distance: 0px;
+    --ab-marquee-duration: var(--ab-speed-base);
+  }
+
+  /* JS will keep this updated */
+  :root { --ab-height: 0px; }
+
+  /* Always visible announcement bar */
+  .announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10001;
+    width: 100%;
+    background: var(--ab-bg);
+    color: var(--ab-color);
+  }
+
+  /* Optional: anchor links offset */
+  html { scroll-padding-top: var(--ab-height); }
+
+  .announcement-bar__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 38px;
+  }
+
+  .announcement-marquee {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .announcement-marquee__viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: var(--ab-pad-y) var(--ab-pad-x);
+    padding-right: 54px; /* space for close button */
+  }
+
+  .announcement-marquee__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  /* Animate by EXACT pixels (set by JS) */
+  @keyframes announcement-marquee {
+    0%   { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(calc(var(--ab-marquee-distance) * -1),0,0); }
+  }
+
+  .announcement-bar--scrolling .announcement-marquee__track {
+    animation: announcement-marquee var(--ab-marquee-duration) linear infinite;
+  }
+
+  .announcement-bar--pause:hover .announcement-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .announcement-marquee__group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ab-gap);
+    white-space: nowrap;
+  }
+
+  .announcement-marquee__item,
+  .announcement-marquee__item:visited {
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .02em;
+    font-size: var(--ab-font-desktop);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .announcement-marquee__item p {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  .announcement-marquee__sep {
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .announcement-marquee__group .announcement-marquee__sep:last-child {
+    display: none;
+  }
+
+  .announcement-bar__close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: currentColor !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 2;
+  }
+
+  .announcement-bar__close:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (max-width: 639px) {
+    .announcement-marquee__viewport {
+      padding: 6px 10px;
+      padding-right: 48px;
+    }
+    .announcement-marquee__item {
+      font-size: var(--ab-font-mobile);
+    }
+  }
+{% endstyle %}
+
+{% if section.blocks.size > 0 and visible_blocks > 0 %}
+  <announcement-bar
+    class="announcement-bar{% if section.settings.enable_marquee %} announcement-bar--scrolling{% endif %}{% if section.settings.pause_on_hover %} announcement-bar--pause{% endif %} color-{{ section.settings.color_schema }}"
+    data-section-type="announcement-bar"
+    data-announcement-id="{{ section.id }}"
+    data-speed-base="{{ section.settings.scroll_speed }}"
+  >
+    <div class="announcement-bar__inner">
+      <div class="announcement-marquee" role="region" aria-label="{{ 'sections.header.announcement' | t }}">
+        <div class="announcement-marquee__viewport">
+          <div class="announcement-marquee__track">
+            <div class="announcement-marquee__group" data-marquee-group>
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'announcement' -%}
+                  {% liquid
+                    assign hide_on_page = block.settings.hide_on_page
+                    assign should_show = false
+                    if block.settings.homepage_only == false or request.page_type == 'index'
+                      assign should_show = true
+                    endif
+                    if hide_on_page != blank and current_handle != blank
+                      if hide_on_page contains current_handle
+                        assign should_show = false
+                      endif
+                    endif
+                  %}
+
+                  {% if should_show and block.settings.text != blank %}
+                    {% capture classes %}
+                      {% render 'visibility-classes', settings: block.settings %}
+                    {% endcapture %}
+
+                    {%- if block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}" class="announcement-marquee__item {{ classes | strip_newlines | strip }}" {{ block.shopify_attributes }}>
+                        {{ block.settings.text }}
+                      </a>
+                    {%- else -%}
+                      <span class="announcement-marquee__item {{ classes | strip_newlines | strip }}" {{ block.shopify_attributes }}>
+                        {{ block.settings.text }}
+                      </span>
+                    {%- endif -%}
+                    <span class="announcement-marquee__sep">|</span>
+                  {% endif %}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if section.settings.show_close_button %}
+        <button
+          class="announcement-bar__close btn btn--icon no-js-hidden"
+          data-close-announcement
+          aria-label="{{ 'accessibility.close' | t }}"
+          type="button"
+        >
+          <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+          {% comment %} theme-check-disable {% endcomment %}
+          {{ 'icon-close-small.svg' | inline_asset_content }}
+          {% comment %} theme-check-enable {% endcomment %}
+        </button>
+      {% endif %}
+    </div>
+  </announcement-bar>
+{% endif %}
+
+{% javascript %}
+  class AnnouncementBar extends HTMLElement {
+    constructor() {
+      super();
+      this.handleClose = this.handleClose.bind(this);
+      this.rebuildMarquee = this.rebuildMarquee.bind(this);
+      this.applyOffsets = this.applyOffsets.bind(this);
+      this.resetOffsets = this.resetOffsets.bind(this);
+      this._ro = null;
+    }
+
+    connectedCallback() {
+      const id = this.dataset.announcementId;
+
+      // Persist closed state
+      try {
+        if (id && localStorage.getItem(`announcement_closed_${id}`) === '1') {
+          this.remove();
+          this.resetOffsets();
+          return;
+        }
+      } catch (e) {}
+
+      const btn = this.querySelector('[data-close-announcement]');
+      if (btn) btn.addEventListener('click', this.handleClose);
+
+      // Build marquee first, then apply offsets (so height is accurate)
+      this.rebuildMarquee();
+      requestAnimationFrame(() => this.applyOffsets());
+
+      const viewport = this.querySelector('.announcement-marquee__viewport');
+      if (viewport && 'ResizeObserver' in window) {
+        this._ro = new ResizeObserver(() => {
+          this.rebuildMarquee();
+          this.applyOffsets();
+        });
+        this._ro.observe(viewport);
+      } else {
+        window.addEventListener('resize', this.rebuildMarquee, { passive: true });
+        window.addEventListener('resize', this.applyOffsets, { passive: true });
+      }
+    }
+
+    disconnectedCallback() {
+      const btn = this.querySelector('[data-close-announcement]');
+      if (btn) btn.removeEventListener('click', this.handleClose);
+
+      if (this._ro) this._ro.disconnect();
+      window.removeEventListener('resize', this.rebuildMarquee);
+      window.removeEventListener('resize', this.applyOffsets);
+    }
+
+    getBarHeight() {
+      return this.offsetHeight || 0;
+    }
+
+    applyOffsets() {
+      const h = this.getBarHeight();
+      document.documentElement.style.setProperty('--ab-height', `${h}px`);
+
+      // Offset fixed/sticky header-like elements
+      const headerCandidates = [
+        document.querySelector('#shopify-section-header'),
+        document.querySelector('header'),
+        document.querySelector('.header'),
+        document.querySelector('.header-wrapper'),
+        document.querySelector('.shopify-section-header'),
+        document.querySelector('.f-header'),
+        document.querySelector('.m-header')
+      ].filter(Boolean);
+
+      headerCandidates.forEach(el => {
+        const cs = window.getComputedStyle(el);
+        const pos = cs.position;
+        if (pos === 'fixed' || pos === 'sticky') {
+          el.style.top = `${h}px`;
+          el.style.zIndex = '10000'; // keep under announcement bar
+        }
+      });
+
+      // Offset fixed drawers/menus
+      const drawerSelectors = [
+        '.menu-drawer',
+        '.drawer',
+        '.drawer__inner',
+        '.mobile-nav',
+        '.mobile-navigation',
+        '.header__drawer',
+        '.m-drawer',
+        '.f-drawer',
+        '.f-drawer__inner'
+      ];
+
+      drawerSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          const cs = window.getComputedStyle(el);
+          if (cs.position === 'fixed') {
+            el.style.top = `${h}px`;
+            el.style.height = `calc(100% - ${h}px)`;
+          }
+        });
+      });
+    }
+
+    resetOffsets() {
+      document.documentElement.style.setProperty('--ab-height', `0px`);
+
+      const resetSelectors = [
+        '#shopify-section-header',
+        'header',
+        '.header',
+        '.header-wrapper',
+        '.shopify-section-header',
+        '.f-header',
+        '.m-header',
+        '.menu-drawer',
+        '.drawer',
+        '.drawer__inner',
+        '.mobile-nav',
+        '.mobile-navigation',
+        '.header__drawer',
+        '.m-drawer',
+        '.f-drawer',
+        '.f-drawer__inner'
+      ];
+
+      resetSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          el.style.top = '';
+          el.style.height = '';
+          el.style.zIndex = '';
+        });
+      });
+    }
+
+    handleClose() {
+      const id = this.dataset.announcementId;
+      try {
+        if (id) localStorage.setItem(`announcement_closed_${id}`, '1');
+      } catch (e) {}
+
+      this.remove();
+      this.resetOffsets();
+    }
+
+    rebuildMarquee() {
+      const viewport = this.querySelector('.announcement-marquee__viewport');
+      const track = this.querySelector('.announcement-marquee__track');
+      const sourceGroup = this.querySelector('[data-marquee-group]');
+
+      if (!viewport || !track || !sourceGroup) return;
+
+      track.querySelectorAll('[data-marquee-clone="true"]').forEach(n => n.remove());
+
+      const viewportWidth = viewport.clientWidth;
+      const sourceWidth = sourceGroup.scrollWidth;
+
+      if (!sourceWidth || sourceWidth < 10) {
+        requestAnimationFrame(() => this.rebuildMarquee());
+        return;
+      }
+
+      const makeClone = () => {
+        const clone = sourceGroup.cloneNode(true);
+        clone.setAttribute('data-marquee-clone', 'true');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+        track.appendChild(clone);
+      };
+
+      makeClone();
+
+      while (track.scrollWidth < (viewportWidth * 2 + sourceWidth)) {
+        makeClone();
+      }
+
+      this.style.setProperty('--ab-marquee-distance', `${sourceWidth}px`);
+
+      const baseSeconds = parseFloat(this.dataset.speedBase || '18');
+      const duration = (sourceWidth / 1000) * baseSeconds;
+      this.style.setProperty('--ab-marquee-duration', `${Math.max(duration, 6).toFixed(2)}s`);
+    }
+  }
+
+  customElements.define('announcement-bar', AnnouncementBar);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/TN1O3d)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_schema",
+      "label": "t:sections.common.color_schema.label",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close_button",
+      "label": "t:sections.announcement-bar.settings.show_close_button.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Scrolling marquee"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "Enable continuous scrolling",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Speed (seconds per 1000px)",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "s",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#E1002A"
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 9,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>BUY ANY 3 FOR ₹1700 ONLY</p>",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "homepage_only",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.homepage_only.label",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "hide_on_page",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.hide_on_page.label",
+          "info": "t:sections.announcement-bar.blocks.announcement.settings.hide_on_page.info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.common.visibility.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_mobile",
+          "label": "t:sections.common.visibility.mobile",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_tablet",
+          "label": "t:sections.common.visibility.tablet",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_desktop",
+          "label": "t:sections.common.visibility.desktop",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "announcement" },
+      { "type": "announcement", "settings": { "text": "<p>FREE SHIPPING ON ALL ORDERS ₹399 & ABOVE</p>" } }
+    ]
+  }
+}
+{% endschema %}

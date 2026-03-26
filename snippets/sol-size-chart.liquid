@@ -1,0 +1,351 @@
+<style>
+  .sol-chart__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .sol-chart__title{
+    font-size: 13px;
+  }
+  .sol-chart__toggles{
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+  }
+  .sol-chart__toggle{
+    cursor: pointer;
+  }
+  .sol-chart__box{
+    width: 10px;
+    height: 10px;
+    position: relative;
+    border: 1px solid #D8D8D8;
+    display: inline-block;
+  }
+  .sol-chart__box.active::before{
+    content: "";
+    width: 77%;
+    height: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+  }
+  .sol-chart__label{
+    font-size: 13px;
+  }
+  .sol-chart__body .sol-table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    font-family: "syne";
+    display: none;
+  }
+  .sol-chart__body .sol-table.active{
+    display: table;
+  }
+  .sol-chart__body table th{
+    padding: 6px;
+    background: #f5f5f5;
+    border: 1px solid #D8D8D8;
+    font-size: 12px;
+  }
+  .sol-chart__body table td{
+    padding: 7px 10px;
+    border: 1px solid #D8D8D8;
+    font-size: 12px;
+  }
+  .sol-chart__general .sol-table{
+    display: table;
+  }
+  .sol-chart__conv{
+    margin-top: 36px;
+    margin-bottom: 18px;
+  }
+  .sol-chart__subtitle{
+    font-size: 13px;
+    margin-top: 16px;
+  }
+</style>
+<!-- Drawer Overlay -->
+<div
+  id="drawerOverlay"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.2);
+    z-index: 999;
+    display: none;
+  "
+></div>
+
+<!-- Drawer Panel -->
+<div
+  id="drawer"
+  style="
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.5s ease;
+    overflow-y: auto;
+  "
+>
+  <div style="padding: 12px 14px; display: flex; align-items: center; border-bottom: 1px solid #D8D8D8;">
+    <button
+      id="closeDrawerBtn"
+      style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; height: auto;"
+    >
+      <svg width="25" height="7" viewBox="0 0 25 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M5.25 0.000244141L0 3.03133L5.25 6.06242V3.53133H25V2.53133H5.25V0.000244141Z"
+            fill="black" />
+      </svg>
+    </button>
+    <span style="margin-left: 10px; font-size: 14px;">Size Guide</span>
+  </div>
+  <!-- Content (you can paste the size guide image or tables here) -->
+  <div style="padding: 16px;">
+    {% comment %} Add your size guide HTML/image here {% endcomment %}
+    <!--
+      <img
+        src="https://cdn.shopify.com/s/files/1/0724/5912/4972/files/Solandsand0Mayrange67.jpg?v=1748156578"
+        alt="Size Guide"
+        style="max-width: 100%;"
+      >
+    -->
+    <div class="sol-chart__header">
+      <div class="sol-chart__title">Size Guide</div>
+      <div class="sol-chart__toggles">
+        <div class="sol-chart__toggle cent--botton">
+          <span class="sol-chart__box active"></span>
+          <span class="sol-chart__label">Centimeters</span>
+        </div>
+        <div class="sol-chart__toggle inch--botton">
+          <span class="sol-chart__box"></span>
+          <span class="sol-chart__label">Inches</span>
+        </div>
+      </div>
+    </div>
+    <div class="sol-chart__body">
+      <table class="sol-table sol-table__cent active">
+        <thead>
+          <tr>
+            <th>AU/NZ/UK</th>
+            <th>Bust</th>
+            <th>Waist</th>
+            <th>Hips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4 (XXS)</td>
+            <td>78-80</td>
+            <td>58-60</td>
+            <td>88-90</td>
+          </tr>
+          <tr>
+            <td>6 (XS)</td>
+            <td>81-83</td>
+            <td>61-63</td>
+            <td>91-93</td>
+          </tr>
+          <tr>
+            <td>8 (S)</td>
+            <td>85-87</td>
+            <td>65-67</td>
+            <td>95-97</td>
+          </tr>
+          <tr>
+            <td>10 (M)</td>
+            <td>90-92</td>
+            <td>70-72</td>
+            <td>100-102</td>
+          </tr>
+          <tr>
+            <td>12 (L)</td>
+            <td>95-97</td>
+            <td>75-77</td>
+            <td>105-107</td>
+          </tr>
+          <tr>
+            <td>14 (XL)</td>
+            <td>100-103</td>
+            <td>80-82</td>
+            <td>110-112</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="sol-table sol-table__inch">
+        <thead>
+          <tr>
+            <th>AU/NZ/UK</th>
+            <th>Bust</th>
+            <th>Waist</th>
+            <th>Hips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4 (XXS)</td>
+            <td>30.7-31.5</td>
+            <td>22.8-23.6</td>
+            <td>34.6-35.4</td>
+          </tr>
+          <tr>
+            <td>6 (XS)</td>
+            <td>31.9-32.7</td>
+            <td>24.0-24.8</td>
+            <td>35.8-36.6</td>
+          </tr>
+          <tr>
+            <td>8 (S)</td>
+            <td>33.5-34.3</td>
+            <td>25.6-26.4</td>
+            <td>37.4-38.2</td>
+          </tr>
+          <tr>
+            <td>10 (M)</td>
+            <td>35.4-36.2</td>
+            <td>27.6-28.3</td>
+            <td>39.4-40.2</td>
+          </tr>
+          <tr>
+            <td>12 (L)</td>
+            <td>37.4-38.2</td>
+            <td>29.5-30.3</td>
+            <td>41.3-42.1</td>
+          </tr>
+          <tr>
+            <td>14 (XL)</td>
+            <td>39.4-40.6</td>
+            <td>31.5-32.3</td>
+            <td>43.3-44.1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sol-chart__body sol-chart__general">
+      <div class="sol-chart__title sol-chart__conv">Size Conversion</div>
+      <table class="sol-table">
+        <thead>
+          <tr>
+            <th>AU</th>
+            <th>NZ</th>
+            <th>UK</th>
+            <th>US</th>
+            <th>CA</th>
+            <th>JP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>6 (XS)</td>
+            <td>6</td>
+            <td>6</td>
+            <td>2</td>
+            <td>2</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>8 (S)</td>
+            <td>8</td>
+            <td>8</td>
+            <td>4</td>
+            <td>4</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>10 (M)</td>
+            <td>10</td>
+            <td>10</td>
+            <td>6</td>
+            <td>6</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>12 (L)</td>
+            <td>12</td>
+            <td>12</td>
+            <td>8</td>
+            <td>8</td>
+            <td>11</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sol-chart__subtitle">*Sizing is approximate and may vary slightly by product.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  document.getElementById('openDrawerBtn').addEventListener('click', function () {
+    document.getElementById('drawerOverlay').style.display = 'block';
+    document.getElementById('drawer').style.right = '0';
+  });
+
+  function closeDrawer() {
+    document.getElementById('drawerOverlay').style.display = 'none';
+    document.getElementById('drawer').style.right = '-400px';
+  }
+
+  document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
+  document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
+
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const elements = {
+      centBtn: document.querySelector(".cent--botton"),
+      inchBtn: document.querySelector(".inch--botton"),
+      centTable: document.querySelector(".sol-table__cent"),
+      inchTable: document.querySelector(".sol-table__inch")
+    }
+    elements.centBtn.addEventListener("click", ()=>{
+      const box1 = elements.centBtn.querySelector('.sol-chart__box')
+      const box2 = elements.inchBtn.querySelector('.sol-chart__box')
+      if(!box1.classList.contains('active')){
+        box1.classList.add('active')
+      }
+      if(box2.classList.contains('active')){
+        box2.classList.remove('active')
+      }
+
+      if(!elements.centTable.classList.contains('active')){
+        elements.centTable.classList.add('active')
+      }
+      if(elements.inchTable.classList.contains('active')){
+        elements.inchTable.classList.remove('active')
+      }
+    })
+    elements.inchBtn.addEventListener("click", ()=>{
+      const box1 = elements.centBtn.querySelector('.sol-chart__box')
+      const box2 = elements.inchBtn.querySelector('.sol-chart__box')
+      if(box1.classList.contains('active')){
+        box1.classList.remove('active')
+      }
+      if(!box2.classList.contains('active')){
+        box2.classList.add('active')
+      }
+
+      if(elements.centTable.classList.contains('active')){
+        elements.centTable.classList.remove('active')
+      }
+      if(!elements.inchTable.classList.contains('active')){
+        elements.inchTable.classList.add('active')
+      }
+    })
+
+  })
+</script>

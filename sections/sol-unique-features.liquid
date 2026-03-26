@@ -1,0 +1,238 @@
+<style>
+  /* Increase font size for subtitles of all three features */
+#{{ section.id }} .swiper-slide:nth-child(1) .sol-ucard__subtitle,
+#{{ section.id }} .swiper-slide:nth-child(2) .sol-ucard__subtitle,
+#{{ section.id }} .swiper-slide:nth-child(3) .sol-ucard__subtitle {
+  font-size: 17px;   /* Adjust this value as you like */
+  font-weight: 100;  /* Optional: makes subtitle bolder */
+}
+
+  #{{ section.id }} .swiper {
+    width: 100%;
+  }
+
+  #{{ section.id }} .swiper-wrapper {
+    display: flex;
+    transition-timing-function: ease-in-out;
+  }
+
+  #{{ section.id }} .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    margin: 50px 0 0 0;
+    border-right: 1px solid #D8D8D8;
+  }
+  #{{ section.id }} .swiper-slide:last-child {
+    border-right: 0;
+  }
+  #{{ section.id }} .sol-slide {
+    width: 100%;
+    height: auto;
+  }
+
+  #{{ section.id }} .sol-ucard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #{{ section.id }} .sol-ucard:last-child {
+    border: 0;
+  }
+
+  #{{ section.id }} .sol-ucard__image {
+    height: 34px;
+    width: auto;
+  }
+
+  #{{ section.id }} .sol-ucard__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #{{ section.id }} .sol-ucard__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: #000;
+  }
+
+  #{{ section.id }} .sol-ucard__title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  #{{ section.id }} .sol-ucard__subtitle {
+    font-size: 12px;
+  }
+
+  /* 3-column grid for screens >= 768px */
+  @media screen and (min-width: 768px) {
+    #{{ section.id }} .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0px;
+    }
+
+    #{{ section.id }} .swiper-slide {
+      width: 100% !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    #{{ section.id }} .swiper-slide {
+    margin: 50px 0 50px 0;
+  }
+  }
+</style>
+
+<div id="{{ section.id }}" class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide sol-slide">
+      <div class="sol-ucard">
+        <div class="sol-ucard__image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0724/5912/4972/files/afterpay.svg?v=1746525880"
+            alt=""
+            width=""
+            height=""
+          >
+        </div>
+        <div class="sol-ucard__info">
+          <div class="sol-ucard__title">{{ section.settings.feat1_title }}</div>
+          <div class="sol-ucard__subtitle">{{ section.settings.feat1_subtitle }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide sol-slide">
+      <div class="sol-ucard">
+        <div class="sol-ucard__image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0724/5912/4972/files/ship-truck.svg?v=1746526189"
+            alt=""
+            width=""
+            height=""
+          >
+        </div>
+        <div class="sol-ucard__info">
+          <div class="sol-ucard__title">{{ section.settings.feat2_title }}</div>
+          <div class="sol-ucard__subtitle">{{ section.settings.feat2_subtitle }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide sol-slide">
+      <div class="sol-ucard">
+        <div class="sol-ucard__image">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0724/5912/4972/files/bag.svg?v=1746526254"
+            alt=""
+            width=""
+            height=""
+          >
+        </div>
+        <div class="sol-ucard__info">
+          <div class="sol-ucard__title">{{ section.settings.feat3_title }}</div>
+          <div class="sol-ucard__subtitle">{{ section.settings.feat3_subtitle }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  let swiperInstance;
+  function initSwiper() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 768 && !swiperInstance) {
+      swiperInstance = new Swiper('#{{ section.id }}', {
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 1500,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+      });
+    } else if (screenWidth >= 768 && swiperInstance) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+  }
+
+  window.addEventListener('load', initSwiper);
+  window.addEventListener('resize', initSwiper);
+</script>
+
+{% schema %}
+{
+  "name": "Sol Unique Features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Feature 1"
+    },
+    {
+      "type": "text",
+      "id": "feat1_title",
+      "label": "Title",
+      "default": "AfterPay"
+    },
+    {
+      "type": "text",
+      "id": "feat1_subtitle",
+      "label": "Subtitle",
+      "default": "Style Now, Pay Later"
+    },
+    {
+      "type": "header",
+      "content": "Feature 2"
+    },
+    {
+      "type": "text",
+      "id": "feat2_title",
+      "label": "Title",
+      "default": "Fast Shipping"
+    },
+    {
+      "type": "text",
+      "id": "feat2_subtitle",
+      "label": "Subtitle",
+      "default": "Free on orders $50+"
+    },
+    {
+      "type": "header",
+      "content": "Feature 3"
+    },
+    {
+      "type": "text",
+      "id": "feat3_title",
+      "label": "Title",
+      "default": "Easy Returns"
+    },
+    {
+      "type": "text",
+      "id": "feat3_subtitle",
+      "label": "Subtitle",
+      "default": "30-day Guarantee"
+    }
+  ],
+  "presets": [{
+    "name": "Sol Unique Features"
+  }]
+}
+{% endschema %}

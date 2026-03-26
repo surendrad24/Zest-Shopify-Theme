@@ -1,0 +1,448 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "breadcrumb_iBGXJi": {
+      "type": "breadcrumb",
+      "disabled": true,
+      "settings": {
+        "brc_container": "container",
+        "brc_text_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collapsible_tabs_3L6UTG": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "1655868348d34715f4-0": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "CAN I CANCEL MY ORDER?",
+            "content": "<p>If your order has not yet been picked and packed you are able to request a cancellation. Please email: <span style=\"text-decoration:underline\"><strong>customers@iamsol.com.au</strong></span><strong> </strong>and make sure to quote your order number.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "1655868348d34715f4-1": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "I JUST PLACED AN ORDER, WHERE IS MY EMAIL CONFIRMATION?",
+            "content": "<p>In most circumstances it is more than likely sent to your spam folder or the email address has been incorrectly spelled or you used a different email to your normal, please email <span style=\"text-decoration:underline\"><strong>hello@iamsol.com.au</strong></span><strong> </strong>with your name and order number after checking this. Our team will amend this for you as soon as possible to ensure you receive all tracking updates.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "9891166a-7648-4555-84e2-cfb0e9832a21": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "CAN I PURCHASE/PICK UP ITEMS FROM YOUR WAREHOUSE?",
+            "content": "<p>Yes, please select pick up at checkout. Once packed, you will receive an email to confirm and be contacted to confirm a pickup time.</p><p>Please do not turn up without a confirmed time; otherwise, you may turn up to a closed warehouse.</p><p>Email: <span style=\"text-decoration:underline\"><strong>customers@iamsol.com.au</strong></span> to organise pick up time.</p><p>Warehouse location is: Broadbeach , GOLD COAST , QLD , 4218</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "18680409-0b8f-43b1-97dc-07c8957da9f8": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "CAN I MAKE AN AMENDMENT TO MY ORDER?",
+            "content": "<p>We will do our best to make any changes to your order before dispatch but unfortunately we cannot guarantee this is possible. Please email us within 1 hour of placing your order to ensure the best chance of our team to make any relevant updates to an item or postal address. (This excludes weekends. We will reply to your emails first available opportunity on Monday morning). There may also be other delays which will prevent us from making amendments in time such as over public holidays and sales periods.</p><p>We apologise for the inconvenience and hope to be able to offer this in the future. </p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_AG6CUJ": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHAT ARE YOUR PAYMENT OPTIONS?",
+            "content": "<p>iamsol accepts payment via Amex, Visa, Mastercard, PayPal, Afterpay and Zip Pay. Gift Cards and Credit notes can also be used.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "1655868348d34715f4-0",
+        "1655868348d34715f4-1",
+        "9891166a-7648-4555-84e2-cfb0e9832a21",
+        "18680409-0b8f-43b1-97dc-07c8957da9f8",
+        "content_AG6CUJ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "small",
+        "section_header_content_spacing": "small",
+        "heading": "ORDERS AND PAYMENTS",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h-xl",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "extra-large",
+        "content_width": "narrow",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs_NaLDkL": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "content_anRQMc": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "HOW DO I MAKE A RETURN?",
+            "content": "<p>To return an item/s, please visit our Return Policy page to ensure your return is in line with our return criteria<br/>This can be found on the link below:</p><p><a href=\"https://solandsand.store/pages/refund-policy\" title=\"https://solandsand.store/pages/refund-policy\">RETURN POLICY</a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_UeaFfc": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "HOW DO I EXCHANGE AN ITEM?",
+            "content": "<p>To exchange an item please place a new order with your preferred size/item and follow the return process to return the exchange item.</p><p>Customers are responsible for return shipping. Return shipping can be purchased for $10.60 through <a href=\"https://portal.refundid.com/stores/solandsand\" title=\"https://portal.refundid.com/stores/solandsand\"><strong>Refundid.</strong></a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_cDV6eX": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "DO YOU OFFER REFUNDS?",
+            "content": "<p>Yes. Items purchased at full price can be returned for a refund.</p><p>To return an item/s, please visit our Return Policy page to ensure your return is in line with our return criteria</p><p>This can be found on the link below:</p><p><a href=\"https://solandsand.store/pages/refund-policy\" title=\"https://solandsand.store/pages/refund-policy\">RETURN POLICY</a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_cmGLfc": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHAT IS YOUR RETURNS POLICY?",
+            "content": "<p><strong>RETURN POLICY</strong><br/>Please note, our returns policy is in complete compliance with Australian Consumer Law and the ACCC.</p><p>Subject to the below, items can be returned for a full refund or online credit note within 21 days of placing your order.**</p><p>Please ensure you read and understand our return policy before purchasing with us, we are unable to be change our return policy.</p><p><strong>Your returned item must meet the return criteria.</strong></p><p><strong>Return/Exchange Criteria:</strong></p><p><strong>Sale items</strong>- items marked as <strong>SALE ITEM</strong> in description or marked down in price can only be returned for an online credit note (not a refund).</p><p><strong>Items purchased during a Storewide Sale - eg BLACK FRIDAY - </strong>any<strong> </strong>items purchased during a Storewide Sale are <em><strong>ineligible</strong></em> for a refund (where a strikethrough price is displayed, OR a discount is automatically applied at checkout - 15%OFF Storewide, OR a discount code is manually entered at checkout - eg BLACKFRIDAY25, EOFY Sale, AfterPay Day, FLASH25%). These items can only be returned for an <strong>online credit note</strong> (not a refund). </p><p><strong>Final Sale items</strong>- items marked as <strong>FINAL SALE</strong> cannot be returned for a refund or online credit note, unless faulty. They are last chance styles and will not be restocked. Any unauthorised Final Sale items which are posted back to us will be refused upon delivery and returned to sender.</p><p><strong>Jewellery</strong>- due to hygiene reasons, we do not allow returns of these items. </p><p><strong>Shipping</strong>: If you received free shipping, this will be deducted from the customers refund.</p><p><strong>Your return must meet the following conditions:</strong></p><p>- Must be received within 21 days of placing your order.<br/>- Must not be worn<br/>- Must not have perfume smells or washed smell<br/>- Items need to be returned in original packaging<br/>- Tags must be attached and must not have been removed - NO TAGS NO RETURN, REMOVED TAGS NO RETURN <br/>- No make-up, marks or other stains on clothing or items<br/>- Items must not be washed</p><p>To return an item/s please visit our Return Policy page to ensure your return is inline our return criteria.</p><p>This can be found on the link below:</p><p><a href=\"https://solandsand.store/pages/refund-policy\" title=\"https://solandsand.store/pages/refund-policy\">RETURN POLICY</a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_LFXkAP": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "HOW LONG DOES IT TAKE TO PROCESS A RETURN?",
+            "content": "<p>Once received into our warehouse, returns are processed within 5-7 business days. </p><p>If you want a fast refund please use <strong>Refundid </strong>for an instant refund.</p><p>During busy sale periods, there may be some delays in processing returns however we work as quickly as possible to process returns.</p><p>Please note - if you use Australia Post, so please allow 5-10 working days for your return to be received back to us.</p><p>Example: we physically receive your package from Australia Post on Monday Feb 1st, you can expect your refund or store credit as early Friday Feb 5th.</p><p>Please always refer to the journey of your tracking.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_anRQMc",
+        "content_UeaFfc",
+        "content_cDV6eX",
+        "content_cmGLfc",
+        "content_LFXkAP"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "small",
+        "section_header_content_spacing": "small",
+        "heading": "RETURNS/EXCHANGES/STORE CREDIT",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h-xl",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "extra-large",
+        "content_width": "narrow",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs_AyXYrF": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "content_fnydez": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "HAS MY ORDER BEEN DISPATCHED?",
+            "content": "<p>We process orders on business days, which are Monday to Friday and exclude public holidays in Queensland, Australia. </p><p>Please allow 1-2 business days to dispatch your order however, there can be unexpected delays, especially in peak periods or after sales so your patience and understanding is appreciated.</p><p>When your order is shipped you will receive an email from SOL+SAND to confirm and Australia Post.</p><p>If you have received this please check your spam and also make sure <span style=\"text-decoration:underline\"><strong>customers@iamsol.com.au</strong></span> is added to your address list.</p><p>Most hotmail accounts will have our emails sent directly into spam.</p><p>If our email is not where to be found please contact us: <span style=\"text-decoration:underline\"><strong>customers@iamsol.com.au</strong></span></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_QmY8hE": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "IF I AM NOT HOME TO SIGN FOR MY PARCEL WILL IT BE DELIVERED?",
+            "content": "<p>If you are located within Australia we give Australia Post ATL (Authority to Leave).</p><p>Please note if there is no safe place to leave your parcel the postal company will likely take your parcel to a local post office.</p><p>If you are international you will need to sign for your parcel, unless you give your countries postal service ALT (Authority to Leave).</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_YTfmTX": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "MY PARCEL HASN'T ARRIVED YET?",
+            "content": "<p>It can be quite frustrating when you're counting on an expected arrival date and your parcel has still not arrived. Within Australia? Keep a close eye on your tracking as 3 business days may be added to the original arrival date, Australia Posts rules not ours*</p><p>After 3 business days consider raising a customer enquiry directly with Australia Post. You can do this from your Australia Post tracking page. Auspost may advise to contact us however to avoid delay you can raise your own and receive direct updates.</p><p>You will be able to track your parcels via: <a href=\"https://auspost.com.au/mypost/track/#/search\" target=\"_blank\">https://auspost.com.au/mypost/track/#/search</a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_3xHtxe": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHAT IS YOUR RETURNS POLICY?",
+            "content": "<p><strong>RETURN POLICY</strong><br/>Please note, our returns policy is in complete compliance with Australian Consumer Law and the ACCC.</p><p>Subject to the below, items can be returned for a full refund or online credit note within 21 days of placing your order.**</p><p>Please ensure you read and understand our return policy before purchasing with us, we are unable to be change our return policy.</p><p><strong>Your returned item must meet the return criteria.</strong></p><p><strong>Return/Exchange Criteria:</strong></p><p><strong>Sale items</strong>- items marked as <strong>SALE ITEM</strong> in description or marked down in price can only be returned for an online credit note (not a refund).</p><p><strong>Items purchased during a Storewide Sale - eg BLACK FRIDAY - </strong>any<strong> </strong>items purchased during a Storewide Sale are <em><strong>ineligible</strong></em> for a refund (where a strikethrough price is displayed, OR a discount is automatically applied at checkout - 15%OFF Storewide, OR a discount code is manually entered at checkout - eg BLACKFRIDAY25, EOFY Sale, AfterPay Day, FLASH25%). These items can only be returned for an <strong>online credit note</strong> (not a refund). </p><p><strong>Final Sale items</strong>- items marked as <strong>FINAL SALE</strong> cannot be returned for a refund or online credit note, unless faulty. They are last chance styles and will not be restocked. Any unauthorised Final Sale items which are posted back to us will be refused upon delivery and returned to sender.</p><p><strong>Jewellery</strong>- due to hygiene reasons, we do not allow returns of these items. </p><p><strong>Shipping</strong>: If you received free shipping, this will be deducted from the customers refund.</p><p><strong>Your return must meet the following conditions:</strong></p><p>- Must be received within 21 days of placing your order.<br/>- Must not be worn<br/>- Must not have perfume smells or washed smell<br/>- Items need to be returned in original packaging<br/>- Tags must be attached and must not have been removed - NO TAGS NO RETURN, REMOVED TAGS NO RETURN <br/>- No make-up, marks or other stains on clothing or items<br/>- Items must not be washed</p><p>To return an item/s please visit our Return Policy page to ensure your return is inline our return criteria.</p><p>This can be found on the link below:</p><p><a href=\"https://solandsand.store/pages/refund-policy\" title=\"https://solandsand.store/pages/refund-policy\">RETURN POLICY</a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_ehcXjP": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHAT IS MY DELIVERY TIMEFRAME?",
+            "content": "<p>Australia Standard Metro: 2-5 business days <em>estimate only </em>Australia Standard Rural: 3-7 business days <em>estimate only</em></p><p>Australia Express Metro: 1-3 business days <em>estimate only</em><br/>Australia Express Rural: 2-3 business days <em>estimate only</em></p><p>New Zealand Standard: 5-10 business days <em>estimate only</em><br/>New Zealand Express: 2-3 business days <em>estimate only</em><br/></p><p>Please note that these time frames are an estimate provided by a postal company, there may be delays due to weather, or delays within the postal company itself that we may be unaware of. Customs may also add a day or so while your parcel is waiting to be cleared.</p><p><a href=\"https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf\" title=\"https://auspost.com.au/content/dam/auspost_corp/media/documents/domestic-parcels-delivery-estimator.pdf\"><strong>Australia Post estimator</strong></a></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_dmHrTn": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "I THINK MY PARCEL IS LOST!",
+            "content": "<p>It can be common for parcels to go missing during peak periods, and sometimes during those quieter days. If you believe this has happened to you the first step is opening a case with Australia post.</p><p>Once you have done so forward the case number to our customer care team with your name, order number and description of items. The case can take up to 10 business days to be closed.</p><p>If the item is missing, we will need to wait for the case to be closed prior to sending off a replacement if possible. If you have not opted for transit cover, you may not be covered and we will not be able to absorb the costs.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_ge6xpC": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHY DO I HAVE TO PAY TO MAKE A RETURN?",
+            "content": "<p>As we continue to grow we hope to offer customers the option of free returns, at this time however it is the customers responsibility to cover the cost of return.</p><p>For Australian Residence you can use <strong>Refundid</strong> to purchase page a returns label for a flat rate of $10.60 regardless of weight or size of the parcel.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_fnydez",
+        "content_QmY8hE",
+        "content_YTfmTX",
+        "content_3xHtxe",
+        "content_ehcXjP",
+        "content_dmHrTn",
+        "content_ge6xpC"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "small",
+        "section_header_content_spacing": "small",
+        "heading": "DELIVERY + SHIPPING",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h-xl",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "extra-large",
+        "content_width": "narrow",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs_gFJdVp": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "content_7baRrL": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "I DON'T WANT A STORE CREDIT I WANT A REFUND.",
+            "content": "<p>Please note, our returns policy is in complete compliance with Australian Consumer Law and the ACCC.</p><p>As a consumer it is your responsibility to read a Return Policy before making a purchase. When you make a purchase, you are agreeing to the Return Policy.</p><p>Should you not understand the Return Policy or have questions before you purchase, you are encouraged to contact the IAMSOL to ensure you understand whether an item can be returned for a refund or a store credit.</p><p>IAMSOL will not change its policy to accommodate a customer's preferred outcome. We apologise for any inconvenience this may cause.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_NBihmD": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "I HAVE RECEIVED A FAULTY ITEM.",
+            "content": "<p>We're so sorry to hear that your item is faulty!</p><ul><li>Faulty garments must be faulty by manufacture. A worn item with makeup stains or marks, or an item damaged as a result of failing to follow our care instructions, may be found ineligible for our faulty return process.<br/> </li><li>All eligible faulty returns will proceed through a faulty returns review to determine the nature of the fault. You will then be advised of the final decision and the options available to you before we proceed.<br/><br/></li><li>All garments are quite delicate and may become damaged if correct care instructions are not followed.<br/>Due to the nature of some fabrics composed for their fashionable qualities and fit, this can include shrinkage, colour fading and other outcomes.<br/>It is advised that all items from SOL+SAND be cold hand washed only.<br/> </li><li>We will happily cover postage costs to return and replace an approved faulty item, with the identical item whenever possible. If you do not want a repair or replacement for a minor fault, please discuss the other available options with our Customer Care team.<br/> </li><li>A refund may be offered if we cannot repair or replace the faulty garment with the identical item OR the fault is major as per Australian Consumer Law.<br/> </li><li>To speed up your faulty return, please be sure to submit photos of your fault during the returns process via our Returns Portals above. Australian customers only. This will speed up the review process and avoid delays.<br/>If you are outside Australia, please be sure to email us a photo of the fault along with your order number as soon as possible to <strong>customers@iamsol.com.au</strong></li></ul><p>From here we will be able to make an initial assessment of your fault and get a resolution underway.<br/><br/></p><ul><li>If a faulty item is returned to us without our prior approval by our Customer Care team, it may be deemed ineligible for faulty return and a credit note will be issued.<br/><br/></li><li>Faulty returns for international customers where return postage is charged, must be approved for return and also approved for return shipping cost, prior to sending, or else the return shipping may not be covered by SOL+SAND.<br/> </li><li>Faulty items are only returnable within a reasonable timeframe. Items that are more than 3 months old may not be eligible for our faulty returns process.</li></ul><p>For assistance contact us via email <strong>customers@iamsol.com.au </strong>quoting your order number.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_8KdmtB": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHERE ARE YOU LOCATED?",
+            "content": "<p>We are located in Gold Coast, QLD, Australia<br/><br/></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_GKqgnW": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "DO YOU HAVE A PHYSICAL STORE?",
+            "content": "<p>Not at this stage but will have some popup stores soon.<br/><br/></p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_nrVPfC": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "HOW DO I CONTACT YOU?",
+            "content": "<p>Please contact via email:</p><p><strong>customers@iamsol.com.au</strong></p><p>Make sure to mention your order number and a quick summary of your enquiry.</p><p>We aim to respond to you as quickly as possibe within 1-2 Business Day.</p><p>Please note during busy periods this may take longer and we apologise for the inconvenience.</p><p>We will work to resolve your enquiry within our policy and practises.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_CUHmfY": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "I THINK MY PARCEL IS LOST!",
+            "content": "<p>It can be common for parcels to go missing during peak periods, and sometimes during those quieter days. If you believe this has happened to you the first step is opening a case with Australia post.</p><p>Once you have done so forward the case number to our customer care team with your name, order number and description of items. The case can take up to 10 business days to be closed.</p><p>If the item is missing, we will need to wait for the case to be closed prior to sending off a replacement if possible. If you have not opted for transit cover, you may not be covered and we will not be able to absorb the costs.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_9DcWYT": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "WHY DO I HAVE TO PAY TO MAKE A RETURN?",
+            "content": "<p>As we continue to grow we hope to offer customers the option of free returns, at this time however it is the customers responsibility to cover the cost of return.</p><p>For Australian Residence you can use <strong>Refundid</strong> to purchase page a returns label for a flat rate of $10.60 regardless of weight or size of the parcel.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_7baRrL",
+        "content_NBihmD",
+        "content_8KdmtB",
+        "content_GKqgnW",
+        "content_nrVPfC",
+        "content_CUHmfY",
+        "content_9DcWYT"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "small",
+        "section_header_content_spacing": "small",
+        "heading": "GENERAL INFORMATION",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h-xl",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "extra-large",
+        "content_width": "narrow",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumb_iBGXJi",
+    "collapsible_tabs_3L6UTG",
+    "collapsible_tabs_NaLDkL",
+    "collapsible_tabs_AyXYrF",
+    "collapsible_tabs_gFJdVp"
+  ]
+}

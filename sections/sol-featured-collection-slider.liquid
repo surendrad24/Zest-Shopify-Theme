@@ -1,0 +1,422 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.css">
+<style>
+  .{{ section.id }}-sol-slider__container {
+      padding: 20px 0 20px 20px;
+      padding-top: {{section.settings.padding_desktop_top}}px;
+      padding-bottom: {{section.settings.padding_desktop_bottom}}px;
+  }
+
+  .{{ section.id }}-sol-slider__container .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .header h2 {
+      font-size: 20px;
+      /* font-weight: bold; */
+      margin-bottom: 0;
+  }
+
+  .{{ section.id }}-sol-slider__container .navigation {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid;
+      padding-bottom: 7px;
+      width: 10%;
+      justify-content: space-between;
+      margin-right: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .nav-button {
+      width: 40px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      user-select: none;
+  }
+
+  .{{ section.id }}-sol-slider__container .nav-button:last-child {
+      justify-content: flex-end;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper-wrapper {
+      will-change: transform;
+      /* Optimize for animations */
+      transform-style: preserve-3d;
+      /* Help with smoothness */
+      backface-visibility: hidden;
+      /* Prevent flickering */
+      transition-timing-function: ease-in-out !important;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      /* Prevent flickering */
+      transform: translate3d(0, 0, 0);
+      /* Force hardware acceleration */
+  }
+
+  .{{ section.id }}-sol-slider__container .product-card {
+      background-color: white;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      /* Subtle shadow */
+  }
+
+  .{{ section.id }}-sol-slider__container .product-image {
+      width: 100%;
+      max-width: 460px;
+      aspect-ratio: 0.72/1;
+      object-fit: cover;
+      position: relative;
+  }
+
+  .{{ section.id }}-sol-slider__container .discount-tag {
+      position: absolute;
+      bottom: 13px;
+      right: 10px;
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 2px;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-info {
+      padding: 15px 0;
+      display: flex;
+      flex-direction: column;
+      /* gap: 5px; */
+  }
+
+  .{{ section.id }}-sol-slider__container .product-name {
+      font-size: 14px;
+  }
+
+  .{{ section.id }}-sol-slider__container .ratings {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      margin-bottom: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .stars {
+      color: black;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+  }
+
+  .{{ section.id }}-sol-slider__container .review-count {
+      font-size: 11px;
+      color: #666;
+      padding-top: 5px;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-price {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .{{ section.id }}-sol-slider__container .product-price .price-text{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-image-container {
+      position: relative;
+      width: 100%;
+  }
+  @media screen and (min-width: 989px){
+    .{{ section.id }}-sol-slider__container .swiper-slide {
+      min-width: 22vw !important;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .{{ section.id }}-sol-slider__container {
+        padding: 10px;
+        padding-top: {{section.settings.padding_mobile_top}}px;
+        padding-bottom: {{section.settings.padding_mobile_bottom}}px;
+    }
+  }
+  @media screen and (max-width: 549px){
+
+  /* Make the whole price block wrap nicely */
+  .{{ section.id }}-sol-slider__container .product-price{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px 10px !important; /* row gap, column gap */
+  }
+
+  /* Sale + compare stay on row 1 */
+  .{{ section.id }}-sol-slider__container .product-price .price-text{
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* Badge forced to row 2 */
+  .{{ section.id }}-sol-slider__container .product-price .price-discount-percent{
+    flex: 0 0 100% !important;
+    margin-left: 0 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+
+  .{{ section.id }}-sol-slider__container .price-discount-percent .discount-badge{
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+}
+
+  .{{ section.id }}-sol-slider__container .price-discount-percent .discount-badge{
+  background: #d60000;   /* red box */
+  color: #ffffff;        /* white text */
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1.2;
+  display: inline-block;
+  white-space: nowrap;
+}
+/* Keep price left + badge right (like screenshot) */
+.{{ section.id }}-sol-slider__container .product-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Left side can grow, right side stays pinned */
+.{{ section.id }}-sol-slider__container .product-price .price-text{
+  flex: 1;
+  min-width: 0;
+}
+
+.{{ section.id }}-sol-slider__container .price-discount-percent{
+  flex-shrink: 0;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+</style>
+
+<div class="{{ section.id }}-sol-slider__container">
+  <div class="header">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="navigation">
+      <div class="nav-button swiper-button-prev-custom">
+        <svg width="25" height="7" viewBox="0 0 25 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M5.25 0.000244141L0 3.03133L5.25 6.06242V3.53133H25V2.53133H5.25V0.000244141Z"
+              fill="black" />
+        </svg>
+      </div>
+      <div class="nav-button swiper-button-next-custom">
+        <svg width="25" height="7" viewBox="0 0 25 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M19.75 6.06242L25 3.03133L19.75 0.000244141V2.53133L0 2.53133V3.53133L19.75 3.53133V6.06242Z"
+              fill="black" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div id="{{ section.id }}-sol-swiper" class="swiper sol-swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      {% for productItem in section.settings.collection.products %}
+        <div class="swiper-slide">
+          <a href="/products/{{ productItem.handle }}" class="product-card">
+            <div class="product-image-container">
+              {% assign first_media = productItem.media | first %}
+              <img
+                class="product-image"
+                src="{{ first_media | image_url: width: '600'}}"
+                alt="Pink Dress"
+                width=""
+                height=""
+              >
+            </div>
+            <div class="product-info">
+              <div class="product-name">{{ productItem.title }}</div>
+              {% if productItem.metafields.custom.rating and productItem.metafields.custom.reviews_count %}
+                {% assign rating_value = productItem.metafields.custom.rating | strip | plus: 0 %}
+                {% assign review_count = productItem.metafields.custom.reviews_count | strip | plus: 0 %}
+
+                <div class="ratings">
+                  <div class="stars">
+                    {% for i in (1..rating_value) %}
+                      {% render 'icon-star-rating', filled: true %}
+                    {% endfor %}
+
+                    {% assign empty_stars = 5 | minus: rating_value %}
+                    {% for i in (1..empty_stars) %}
+                      {% render 'icon-star-rating', filled: false %}
+                    {% endfor %}
+                  </div>
+                  <div class="review-count">{{ review_count }} Reviews</div>
+                </div>
+              {% endif %}
+
+              {% assign v = productItem.selected_or_first_available_variant %}
+
+<div class="product-price">
+  <div class="price-text">
+    {% if v.compare_at_price and v.compare_at_price > v.price %}
+      <span class="f-price-item f-price-item--sale">
+        {{ v.price | money_without_trailing_zeros }}
+      </span>
+      <span class="f-price-item f-price-item--regular" style="text-decoration: line-through;">
+        {{ v.compare_at_price | money_without_trailing_zeros }}
+      </span>
+    {% else %}
+      <span class="f-price-item">
+        {{ v.price | money_without_trailing_zeros }}
+      </span>
+    {% endif %}
+  </div>
+
+  {% if v.compare_at_price and v.compare_at_price > v.price %}
+    {% assign discount = v.compare_at_price | minus: v.price %}
+    {% assign discount_percent = discount | times: 100 | divided_by: v.compare_at_price %}
+    <div class="price-discount-percent">
+      <span class="discount-badge">You Save {{ discount_percent | round }}%</span>
+    </div>
+  {% endif %}
+</div>
+
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js" defer></script>
+<script>
+  window.addEventListener('load', function () {
+      const swiper = new Swiper("#{{ section.id }}-sol-swiper", {
+          loop: true,
+          spaceBetween: 20,
+          speed: 600, // Slower transition speed
+          navigation: {
+              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-custom",
+          },
+          breakpoints: {
+              360: {
+                  slidesPerView: 2,
+                  spaceBetween: 20
+              },
+              768: {
+                  slidesPerView: 3.5,
+                  spaceBetween: 20
+              },
+              1024: {
+                  slidesPerView: 4.5,
+                  spaceBetween: 20
+              },
+              1280: {
+                  slidesPerView: 4.5,
+                  spaceBetween: 20
+              }
+          }
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sol Collection Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What's New"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+     {
+      "type": "range",
+      "id": "padding_desktop_top",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop_bottom",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [{
+    "name": "Sol Collection Slider",
+  }]
+}
+{% endschema %}

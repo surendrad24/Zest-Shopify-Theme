@@ -1,0 +1,176 @@
+{% comment %}
+  Klaviyo Embedded Form Section (OS2)
+  Usage: add this section on any page and set the form class (e.g. "klaviyo-form-WbAa65").
+{% endcomment %}
+
+<section
+  id="{{ section.settings.anchor_id | default: section.id }}"
+  class="klaviyo-embed-section {{ section.settings.extra_class }}"
+  data-section-id="{{ section.id }}"
+>
+  <style>
+    #shopify-section-{{ section.id }}{
+      --kl-bg: {{ section.settings.bg_color | default: 'transparent' }};
+      --kl-text: {{ section.settings.text_color | default: '#111111' }};
+      --kl-radius: {{ section.settings.radius | default: 0 }}px;
+      --kl-shadow: {% if section.settings.shadow != blank %}{{ section.settings.shadow }}{% else %}none{% endif %};
+
+      /* mobile first */
+      --kl-pt: {{ section.settings.padding_top_mobile | default: 16 }}px;
+      --kl-pr: {{ section.settings.padding_right_mobile | default: 16 }}px;
+      --kl-pb: {{ section.settings.padding_bottom_mobile | default: 16 }}px;
+      --kl-pl: {{ section.settings.padding_left_mobile | default: 16 }}px;
+      --kl-mt: {{ section.settings.margin_top_mobile | default: 0 }}px;
+      --kl-mb: {{ section.settings.margin_bottom_mobile | default: 0 }}px;
+      --kl-max: {{ section.settings.max_width | default: 900 }}px;
+      --kl-align: {{ section.settings.align }};
+    }
+    @media (min-width: 750px){
+      #shopify-section-{{ section.id }}{
+        --kl-pt: {{ section.settings.padding_top | default: 40 }}px;
+        --kl-pr: {{ section.settings.padding_right | default: 24 }}px;
+        --kl-pb: {{ section.settings.padding_bottom | default: 40 }}px;
+        --kl-pl: {{ section.settings.padding_left | default: 24 }}px;
+        --kl-mt: {{ section.settings.margin_top | default: 0 }}px;
+        --kl-mb: {{ section.settings.margin_bottom | default: 0 }}px;
+        --kl-max: {{ section.settings.max_width | default: 900 }}px;
+      }
+    }
+
+    #shopify-section-{{ section.id }} .kl-wrapper{
+      margin-top: var(--kl-mt);
+      margin-bottom: var(--kl-mb);
+      {% if section.settings.full_width == false %}max-width: var(--kl-max); margin-left: auto; margin-right: auto;{% endif %}
+      padding: var(--kl-pt) var(--kl-pr) var(--kl-pb) var(--kl-pl);
+      background: var(--kl-bg);
+      color: var(--kl-text);
+      border-radius: var(--kl-radius);
+      box-shadow: var(--kl-shadow);
+      position: relative;
+    }
+    #shopify-section-{{ section.id }} .kl-align{
+      display:flex;
+      justify-content:
+        {% case section.settings.align %}
+          {% when 'left' %} flex-start
+          {% when 'right' %} flex-end
+          {% else %} center
+        {% endcase %};
+    }
+    #shopify-section-{{ section.id }} .kl-inner{
+      width: 100%;
+      {% if section.settings.inner_max_width > 0 %}
+        max-width: {{ section.settings.inner_max_width }}px;
+      {% endif %}
+    }
+
+    {% if section.settings.hide_on_mobile %}@media (max-width: 749px){#shopify-section-{{ section.id }}{display:none}}{% endif %}
+    {% if section.settings.hide_on_desktop %}@media (min-width: 750px){#shopify-section-{{ section.id }}{display:none}}{% endif %}
+    {{ section.settings.custom_css }}
+  </style>
+
+  <div class="kl-wrapper {% if section.settings.full_width %}kl-full{% endif %}">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <div class="kl-align">
+        <div class="kl-inner">
+          {% if section.settings.heading != blank %}
+            <h2 style="margin:0 0 .5rem 0; text-align: {{ section.settings.align }};">
+              {{ section.settings.heading | escape }}
+            </h2>
+          {% endif %}
+          {% if section.settings.subheading != blank %}
+            <div style="opacity:.8; margin-bottom: 1rem; text-align: {{ section.settings.align }};">
+              {{ section.settings.subheading }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="kl-align">
+      <div class="kl-inner">
+        {% comment %} If you prefer to paste the Klaviyo div yourself, leave "Form class" as-is and paste in theme customizer {% endcomment %}
+        {% if section.settings.embed_mode == 'class' %}
+          <div class="{{ section.settings.form_class | escape }}"></div>
+        {% else %}
+          {{ section.settings.raw_embed }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.load_script and section.settings.company_id != blank %}
+    <script>
+      (function(){
+        if (!window.__kl_on_site_loaded__) {
+          window.__kl_on_site_loaded__ = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ section.settings.company_id | escape }}';
+          document.head.appendChild(s);
+        }
+      })();
+    </script>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Klaviyo – Embedded Form",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join our list" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>" },
+
+    { "type": "select", "id": "embed_mode", "label": "Embed method", "default": "class",
+      "options": [
+        { "value": "class", "label": "Klaviyo form class" },
+        { "value": "raw", "label": "Raw Klaviyo embed (HTML)" }
+      ]
+    },
+    { "type": "text", "id": "form_class", "label": "Form class (Klaviyo)", "default": "klaviyo-form-WbAa65", "info": "Example: klaviyo-form-XXXXXX" },
+    { "type": "html", "id": "raw_embed", "label": "Raw embed HTML", "info": "Paste the full Klaviyo embed code if you prefer." },
+
+    { "type": "checkbox", "id": "load_script", "label": "Load Klaviyo onsite script here", "default": false },
+    { "type": "text", "id": "company_id", "label": "Klaviyo Company ID", "info": "Only needed if you toggle script loading." },
+
+    { "type": "checkbox", "id": "full_width", "label": "Full width container", "default": false },
+    { "type": "range", "id": "max_width", "label": "Max width (px)", "min": 360, "max": 1600, "step": 20, "default": 900 },
+    { "type": "range", "id": "inner_max_width", "label": "Inner content max width (px, optional)", "min": 0, "max": 1400, "step": 20, "default": 0, "info": "Set to 0 to use full container width." },
+    { "type": "select", "id": "align", "label": "Alignment", "default": "center", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ]},
+
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "transparent" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "range", "id": "radius", "label": "Border radius (px)", "min": 0, "max": 36, "step": 2, "default": 12 },
+    { "type": "text", "id": "shadow", "label": "Box shadow (CSS)", "default": "0 8px 24px rgba(0,0,0,.06)" },
+
+    { "type": "header", "content": "Spacing — Desktop" },
+    { "type": "range", "id": "padding_top", "label": "Padding top (px)", "min": 0, "max": 160, "step": 4, "default": 40 },
+    { "type": "range", "id": "padding_right", "label": "Padding right (px)", "min": 0, "max": 160, "step": 4, "default": 24 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 160, "step": 4, "default": 40 },
+    { "type": "range", "id": "padding_left", "label": "Padding left (px)", "min": 0, "max": 160, "step": 4, "default": 24 },
+    { "type": "range", "id": "margin_top", "label": "Margin top (px)", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom (px)", "min": 0, "max": 200, "step": 4, "default": 0 },
+
+    { "type": "header", "content": "Spacing — Mobile" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (px)", "min": 0, "max": 120, "step": 2, "default": 16 },
+    { "type": "range", "id": "padding_right_mobile", "label": "Padding right (px)", "min": 0, "max": 120, "step": 2, "default": 16 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (px)", "min": 0, "max": 120, "step": 2, "default": 16 },
+    { "type": "range", "id": "padding_left_mobile", "label": "Padding left (px)", "min": 0, "max": 120, "step": 2, "default": 16 },
+    { "type": "range", "id": "margin_top_mobile", "label": "Margin top (px)", "min": 0, "max": 160, "step": 2, "default": 0 },
+    { "type": "range", "id": "margin_bottom_mobile", "label": "Margin bottom (px)", "min": 0, "max": 160, "step": 2, "default": 0 },
+
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID (optional)" },
+    { "type": "text", "id": "extra_class", "label": "Extra CSS class (optional)" },
+    { "type": "textarea", "id": "custom_css", "label": "Custom CSS (scoped to this section)"},
+    { "type": "checkbox", "id": "hide_on_mobile", "label": "Hide on mobile", "default": false },
+    { "type": "checkbox", "id": "hide_on_desktop", "label": "Hide on desktop", "default": false }
+  ],
+  "presets": [
+    { "name": "Klaviyo – Embedded Form", "category": "Email & popups" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,345 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.css">
+
+<style>
+  .{{ section.id }}-sol-slider__container {
+      padding: 20px 0 20px 20px;
+      padding-top: {{section.settings.padding_desktop_top}}px;
+      padding-bottom: {{section.settings.padding_desktop_bottom}}px;
+  }
+
+  .{{ section.id }}-sol-slider__container .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .header h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 0;
+  }
+
+  .{{ section.id }}-sol-slider__container .navigation {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid;
+      padding-bottom: 7px;
+      width: 10%;
+      justify-content: space-between;
+      margin-right: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .nav-button {
+      width: 40px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      user-select: none;
+  }
+
+  .{{ section.id }}-sol-slider__container .nav-button:last-child {
+      justify-content: flex-end;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper {
+      width: 100%;
+      position: relative;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper-wrapper {
+      will-change: transform;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition-timing-function: ease-in-out !important;
+  }
+
+  .{{ section.id }}-sol-slider__container .swiper-slide {
+      width: 20vw !important;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 2rem;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-card {
+      width: 100%;
+      max-width: 100%;
+      background-color: white;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      box-sizing: border-box;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-image-container {
+      position: relative;
+      width: 100%;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+  }
+
+  .{{ section.id }}-sol-slider__container .discount-tag {
+      position: absolute;
+      bottom: 13px;
+      right: 10px;
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 2px;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-info {
+      padding: 15px 0;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-name {
+      font-size: 14px;
+  }
+
+  .{{ section.id }}-sol-slider__container .ratings {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      margin-bottom: 20px;
+  }
+
+  .{{ section.id }}-sol-slider__container .stars {
+      color: black;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+  }
+
+  .{{ section.id }}-sol-slider__container .review-count {
+      font-size: 13px;
+      color: #666;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-price {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .{{ section.id }}-sol-slider__container .product-price .price-text {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .{{ section.id }}-sol-slider__container {
+        padding: 10px;
+        padding-top: {{section.settings.padding_mobile_top}}px;
+        padding-bottom: {{section.settings.padding_mobile_bottom}}px;
+    }
+  }
+
+  @media screen and (max-width: 549px) {
+      .{{ section.id }}-sol-slider__container .navigation {
+          width: auto;
+          padding-bottom: 3px;
+          margin-right: 10px;
+      }
+
+      .{{ section.id }}-sol-slider__container .nav-button {
+          width: 20px;
+      }
+  }
+</style>
+
+<product-recommendations
+  class="product-recommendations block"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=15"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="{{ section.id }}-sol-slider__container">
+      <div class="header">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="navigation">
+          <div class="nav-button swiper-button-prev-custom">
+            <svg width="25" height="7" viewBox="0 0 25 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5.25 0.000244141L0 3.03133L5.25 6.06242V3.53133H25V2.53133H5.25V0.000244141Z"
+                  fill="black" />
+            </svg>
+          </div>
+          <div class="nav-button swiper-button-next-custom">
+            <svg width="25" height="7" viewBox="0 0 25 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M19.75 6.06242L25 3.03133L19.75 0.000244141V2.53133L0 2.53133V3.53133L19.75 3.53133V6.06242Z"
+                  fill="black" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div id="{{ section.id }}-sol-swiper" class="swiper sol-swiper">
+        <div class="swiper-wrapper">
+          {% for productItem in recommendations.products %}
+            <div class="swiper-slide">
+              <a href="/products/{{ productItem.handle }}" class="product-card">
+                <div class="product-image-container">
+                  {% assign first_media = productItem.media | first %}
+                  <img
+                    class="product-image"
+                    src="{{ first_media | image_url: width: '600'}}"
+                    alt="{{ productItem.title | escape }}"
+                  >
+                </div>
+                <div class="product-info">
+                  <div class="product-name">{{ productItem.title }}</div>
+                  <div class="ratings">
+                    <div class="stars">
+                      {% render 'icon-star-rating' %}
+                      {% render 'icon-star-rating' %}
+                      {% render 'icon-star-rating' %}
+                      {% render 'icon-star-rating' %}
+                      {% render 'icon-star-rating' %}
+                    </div>
+                    <div class="review-count">3 Reviews</div>
+                  </div>
+                  <div class="product-price">
+                    <div class="price-text">
+                      {% if productItem.price < productItem.compare_at_price %}
+                        <span class="f-price-item f-price-item--sale">
+                          {{ productItem.price | money_without_trailing_zeros }}
+                        </span>
+                        <span class="f-price-item f-price-item--regular" style="text-decoration: line-through;">
+                          {{ productItem.compare_at_price | money_without_trailing_zeros }}
+                        </span>
+                      {% else %}
+                        <span class="f-price-item">
+                          {{ productItem.price | money_without_trailing_zeros }}
+                        </span>
+                      {% endif %}
+                    </div>
+
+                    {% if productItem.price < productItem.compare_at_price %}
+                      {% assign discount = productItem.compare_at_price | minus: productItem.price %}
+                      {% assign discount_percent = discount | times: 100 | divided_by: productItem.compare_at_price %}
+                      <div class="price-discount-percent">
+                        <span class="discount-badge"> You Save {{ discount_percent | round }}% </span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</product-recommendations>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
+<script>
+  window.addEventListener('load', function () {
+      const swiper = new Swiper("#{{ section.id }}-sol-swiper", {
+          loop: true,
+          spaceBetween: 20,
+          speed: 600, // Slower transition speed
+          navigation: {
+              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-custom",
+          },
+          breakpoints: {
+              360: {
+                  slidesPerView: 2,
+                  spaceBetween: 20
+              },
+              768: {
+                  slidesPerView: 3.5,
+                  spaceBetween: 20
+              },
+              1024: {
+                  slidesPerView: 4.5,
+                  spaceBetween: 20
+              },
+              1280: {
+                  slidesPerView: 4.5,
+                  spaceBetween: 20
+              }
+          }
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sol Product Recomm",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Picked For You"
+    },
+     {
+      "type": "range",
+      "id": "padding_desktop_top",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop_bottom",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [{
+    "name": "Sol Product Recomm",
+  }]
+}
+{% endschema %}
