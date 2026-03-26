@@ -34,6 +34,14 @@ Deployment behavior:
 - `assets/quick-order-list.{js,css}` + `sections/quick-order-list.liquid`: quick-buy list experience.
 - `assets/cart-drawer.js`, `sections/cart-drawer.liquid`, `sections/cart-gift-wrapping.liquid`, `sections/cart-goal.liquid`: enhanced cart drawer with goal progress and gift wrap.
 - `sections/mobile-sticky-bar.liquid` + `assets/notification.js`: mobile CTA bar/notifications.
+- `sections/countdown-timer.liquid` + `assets/countdown-timer.{css,js}`: campaign countdown blocks.
+- `sections/popup.liquid` + `assets/popup-component.{css,js}` + `snippets/sol-exit-popup.liquid`: promo/exit popups.
+- `snippets/cookie-banner.liquid` + `assets/cookie-consent.css`: cookie consent banner.
+- `sections/product-quickview.liquid` + `assets/quick-view.js`: quick view modal for product cards.
+- `sections/lookbook.liquid`, `sections/gallery-images.liquid`, `sections/layered-images.liquid` + related assets: editorial/visual storytelling sections.
+- `sections/image-comparison.liquid` + `assets/image-comparison-slider.css`: before/after image slider.
+- `sections/product-tabs.liquid` + `sections/product-information-tabs.liquid` + `assets/tabs-component.{css,js}`: PDP tabbed content.
+- `assets/preorder.js`: preorder messaging logic.
 
 ## Where to Edit What
 
