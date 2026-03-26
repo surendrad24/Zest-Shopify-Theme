@@ -43,6 +43,15 @@ Deployment behavior:
 - `sections/product-tabs.liquid` + `sections/product-information-tabs.liquid` + `assets/tabs-component.{css,js}`: PDP tabbed content.
 - `assets/preorder.js`: preorder messaging logic.
 
+## Secondary Customizations
+
+- Header/Search UX: `assets/header.js`, `snippets/header__search.liquid`, `snippets/search-drawer.liquid`, `assets/search-drawer.js`.
+- Cart Enhancements: `assets/cart-goal.js`, `snippets/cart-goal.liquid`, `snippets/cart-drawer-item.liquid`, `assets/cart.css`.
+- Reviews/Ratings UI: `snippets/product-rating.liquid`, `snippets/icon-star-rating.liquid`, `snippets/product-card.liquid`.
+- Variant UI: `snippets/variant-picker.liquid`, `snippets/product-variant-options.liquid`, `assets/variants-picker.js`.
+- Announcement/Cookie: `sections/announcement-bar.liquid`, `snippets/cookie-banner.liquid`, `assets/cookie-consent.css`.
+- Collection UX: `snippets/product-grid-header.liquid`, `assets/collection.css`, `assets/collection-list-slider.css`.
+
 ## Where to Edit What
 
 - Header & Announcement: `sections/header.liquid`, `sections/announcement-bar.liquid`, styles in `assets/header.css`, announcement tweaks in `assets/custom.css`.
