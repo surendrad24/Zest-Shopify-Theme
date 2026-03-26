@@ -1,0 +1,5 @@
+# Shopify local dev files
+.env
+.shopify/
+.DS_Store
+node_modules/
