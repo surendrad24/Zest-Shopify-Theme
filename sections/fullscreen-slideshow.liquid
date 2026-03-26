@@ -39,54 +39,70 @@
 
 .slideshow__content-wrapper {
   position: absolute;
-  /* bottom: 33vh; push to bottom */
   top: 48vh;
   left: 0;
   right: 0;
   display: flex;
-  align-items: flex-end;  /* align at bottom vertically */
-  justify-content: center; /* optional: keep centered horizontally */
-  padding: 10rem; /* spacing from bottom */
-  text-align: center; /* keep text neat */
+  align-items: flex-end;
+  justify-content: center;
+  padding: 6rem 2rem;
+  text-align: center;
 }
 
 
 .fullscreen-slideshow__content {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   color: #fff;
   padding: 20px;
+  max-width: 32rem;
+  margin: 0 auto;
 }
 
 .fullscreen-slideshow__heading {
-  font-size: calc(var(--font-hxl-size) * 0.7);;
+  font-size: calc(var(--font-hxl-size) * 0.7);
   font-weight: bold;
   font-family: var(--font-mega-family);
   color: #fff;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
 .fullscreen-slideshow__subheading {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 1.2rem;
+  max-width: 28rem;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
 }
 
 .fullscreen-slideshow__button {
-  margin-top: 20px;
-  padding: 10px 32px;
-  font-size: 16px;
+  margin-top: 24px;
+  padding: 14px 34px;
+  font-size: 14px;
   background: #fff;
   border-color: #fff;
   color: #000;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 999px;
   font-weight: bold;
   font-family: var(--font-btn-family);
-  text-transform: uppdercase;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.fullscreen-slideshow__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+}
+
+.fullscreen-slideshow__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 .fullscreen-slideshow {
@@ -101,6 +117,40 @@
 .fullscreen-slideshow__slide.active {
   opacity: 1;           /* show active slide */
   z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .fullscreen-slideshow {
+    height: 88vh;
+  }
+
+  .fullscreen-slideshow__image {
+    height: 88vh;
+  }
+
+  .slideshow__content-wrapper {
+    top: auto;
+    bottom: 0;
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .fullscreen-slideshow__content {
+    max-width: 22rem;
+    padding: 0;
+  }
+
+  .fullscreen-slideshow__heading {
+    font-size: clamp(2rem, 10vw, 3.3rem);
+  }
+
+  .fullscreen-slideshow__subheading {
+    font-size: 1rem;
+  }
+
+  .fullscreen-slideshow__button {
+    width: min(100%, 16rem);
+    padding: 13px 24px;
+  }
 }
 
 
@@ -148,6 +198,9 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const slides = document.querySelectorAll(".fullscreen-slideshow__slide");
+
+  if (slides.length === 0) return;
+
   let index = 0;
 
   function showSlide(i) {
@@ -161,8 +214,11 @@ document.addEventListener("DOMContentLoaded", function() {
     showSlide(index);
   }
 
-  showSlide(index); // init
-  setInterval(nextSlide, 5000); // change every 5s
+  showSlide(index);
+
+  if (slides.length > 1) {
+    setInterval(nextSlide, 5000);
+  }
 });
 </script>
 
